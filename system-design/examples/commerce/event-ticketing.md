@@ -539,5 +539,5 @@ Interview: single `available=80000` row dies at 2k/s — **must shard or queue**
 - [Multi-region inventory reservation](./multi-region-inventory-reservation.md)
 - [Shopping cart checkout](./shopping-cart-checkout.md)
 - [API gateway rate limiting](../platform/api-gateway-rate-limiting.md)
-- [Concurrency ](../../topics/concurrency.md)
+- [Concurrency](../../topics/concurrency.md)
 - [60-minute runbook](../../topics/interview-runbook-60m.md)

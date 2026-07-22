@@ -1,4 +1,4 @@
-# gardusig/problem-solving
+# Coding
 
 C++17 **competitive programming** reference — algorithm templates plus **solved contest submissions**.
 
@@ -7,7 +7,7 @@ C++17 **competitive programming** reference — algorithm templates plus **solve
 | [reference/](reference/) | Handbook-style templates (graphs, DP, strings, math, data structures) |
 | [solved/](solved/) | Accepted solutions by platform (`{platform}/{slug}.cpp`) |
 
-**Sibling interview repos:** [`system-design`](../system-design/) · [`professional-experiences`](../professional-experiences/) · **Hub:** [`public/interview/problem-solving/`](https://github.com/gardusig/gardusig/tree/main/public/interview/problem-solving).
+**Sibling folders:** [`system-design`](../system-design/) · [`behavioral`](../behavioral/) · **Hub:** [`coding/`](https://github.com/gardusig/interview/tree/main/coding).
 
 ## Reference topics
 

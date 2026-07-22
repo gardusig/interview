@@ -4,7 +4,7 @@ Public **system design interview** reference — architecture examples, AWS dril
 
 **Practice folder** — large-scale architecture, interview examples, AWS drills.
 
-**Hub checkout:** [`public/interview/system-design/`](https://github.com/gardusig/gardusig/tree/main/public/interview/system-design) in [gardusig/gardusig](https://github.com/gardusig/gardusig) · **Interview index:** [`public/interview/`](../) · **Siblings:** [`problem-solving`](../problem-solving/) (coding) · [`professional-experiences`](../professional-experiences/) (behavioral)
+**Hub checkout:** [`system-design/`](https://github.com/gardusig/interview/tree/main/system-design) in [gardusig/interview](https://github.com/gardusig/interview) · **Interview index:** [`../`](../) · **Siblings:** [`coding`](../coding/) · [`behavioral`](../behavioral/)
 
 ## 📇 Index
 
@@ -24,7 +24,7 @@ Public **system design interview** reference — architecture examples, AWS dril
 - **Patterns and templates** in this folder: [example authoring template](./topics/example-authoring-template.md), [AWS reference layout](./topics/aws-reference-layout.md), [event-driven architecture](./topics/event-driven-architecture.md), [60-minute runbook](./topics/interview-runbook-60m.md).
 - **Study overlays**: [frequency tiers](./topics/topic-priority.md), [system catalog](./topics/system-catalog.md), [archetype matrix](./topics/archetype-coverage-matrix.md), [cloud capability matrix](./topics/cloud-capability-matrix.md).
 - **Cross-cloud service names** in [`cloud-services.md`](./topics/cloud-services.md).
-- **Role-level engineering stories** and cross-role behavioral prep: [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) (public).
+- **Role-level engineering stories** and cross-role behavioral prep: [behavioral](../behavioral/README.md).
 
 ## 🧰 Prep runbook
 
@@ -62,7 +62,7 @@ flowchart TB
 
 | If I need… | Open |
 | --- | --- |
-| Behavioral stories and role files | [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) |
+| Behavioral stories and role files | [behavioral](../behavioral/README.md) |
 | Topic notes (APIs, stores, caching, messaging, …) | [`topics-index.md`](./topics-index.md) |
 | Architecture prep priorities (A/B/C) | [`topic-priority.md`](./topics/topic-priority.md) |
 | Cloud capability confidence matrix | [`cloud-capability-matrix.md`](./topics/cloud-capability-matrix.md) |
@@ -82,7 +82,7 @@ flowchart TB
 | [`topics/`](./topics/README.md) | Building blocks, AWS/EDA patterns, runbook, catalog, authoring templates |
 | [`examples/`](./examples/README.md) | Product rounds by domain + [`examples/aws/`](./examples/aws/README.md) service drills |
 | [`topics/high-profit-app-coverage.md`](./topics/high-profit-app-coverage.md) | Company / app → example routing (Meta, Uber, Amazon, …) |
-| [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) | Per-role stories and behavioral interview hub |
+| [behavioral](../behavioral/README.md) | Per-role stories and behavioral interview hub |
 
 ## 🎤 Interaction flow with the interviewer
 
@@ -149,5 +149,5 @@ For topic-level depth after the conversation is structured, use the [topics inde
 
 ## 🔗 Related
 
-- Behavioral interview prep (stories + domains): [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md)
-- [Interview prep hub](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md)
+- Behavioral interview prep (stories + domains): [behavioral](../behavioral/README.md)
+- [Behavioral hub](../behavioral/README.md)

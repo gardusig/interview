@@ -163,7 +163,7 @@ Say aloud in order (~10 min). Write locks into **parsed requirements** before ca
 
 **Connections:** `C ≈ 0.16 × U` → **80M** at target; sticky gateway **~400k conn/pod** at 200 pods (ballpark).
 
-**History reads:** `0.8 × U × 3 ≈ **1.2B** GETs/day** — pagination by `seq`.
+**History reads:** ~`0.8 × U × 3` ≈ **1.2B** GETs/day — pagination by `seq`.
 
 **Egress (WS + HTTP):** dominated by live push + media URLs; text metadata **~10 TB/day** OLTP.
 

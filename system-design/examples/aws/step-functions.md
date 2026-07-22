@@ -64,7 +64,7 @@ flowchart TB
 | Example | How it shows up |
 | --- | --- |
 | [`fintech/payment-workflow-platform.md`](../fintech/payment-workflow-platform.md) | Payment saga |
-| [`platform/workflow-orchestration.md`](../platform/workflow-orchestration.md) | Deep rebuild |
+| [`infra/workflow-orchestration.md`](../infra/workflow-orchestration.md) | Deep rebuild |
 
 ## Related
 

@@ -19,7 +19,7 @@ Use these rules for every **Architecture (user → database)** figure in `exampl
 
 ## Color palette (Mermaid `classDef`)
 
-Apply at the end of every architecture block. Each class uses a **two-stop fill** (`light,deep`) so color ramps within the node while the five classes span the diagram (blue → amber → green → rose → purple). CI validates with the neo renderer and theme gradient in [`mermaid.config.json`](../mermaid/mermaid.config.json).
+Apply at the end of every architecture block. Each class uses a **two-stop fill** (`light,deep`) so color ramps within the node while the five classes span the diagram (blue → amber → green → rose → purple).
 
 | Class | Nodes | Fill gradient |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ classDef data fill:#fce4ec,#ef5350,stroke:#c62828,color:#111
 classDef async fill:#f3e5f5,#ab47bc,stroke:#6a1b9a,color:#111
 ```
 
-Copy-paste source: [`palette.mmd`](../mermaid/palette.mmd) · machine-readable [`palette.json`](../mermaid/palette.json).
+Use the `classDef` block above in every architecture figure.
 
 ## Gold references
 

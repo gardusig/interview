@@ -549,5 +549,5 @@ Indexes:
 - [Event ticketing](./event-ticketing.md)
 - [Multi-region inventory reservation](./multi-region-inventory-reservation.md)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md)
-- [Concurrency ](../../topics/concurrency.md)
+- [Concurrency](../../topics/concurrency.md)
 - [60-minute runbook](../../topics/interview-runbook-60m.md)

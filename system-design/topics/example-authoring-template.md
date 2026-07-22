@@ -675,7 +675,7 @@ Each path should reference APIs from section 6.
 | Subsection | Content |
 | --- | --- |
 | **Correctness model** | Invariants (uniqueness, ordering, balances, lag SLA) |
-| **Failure cases** | Table: failure | symptom | mitigation |
+| **Failure cases** | Table: failure / symptom / mitigation |
 | **Key metrics** | Metrics that detect deep-dive regressions (not generic CPU only) |
 | **Talking points** (optional) | 3–5 bullets for last 2 minutes |
 

@@ -491,6 +491,6 @@ Example: A inserts at 10, B deletes 5–8 concurrently — server produces trans
 - [Chat messenger](./chat-messenger.md)
 - [Real-time delivery tracking](../logistics/real-time-delivery-tracking.md)
 - [News feed](./news-feed.md)
-- [Concurrency ](../../topics/concurrency.md)
-- [API design ](../../topics/api-design.md)
+- [Concurrency](../../topics/concurrency.md)
+- [API design](../../topics/api-design.md)
 - [60-minute runbook](../../topics/interview-runbook-60m.md)

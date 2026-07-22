@@ -532,5 +532,5 @@ Definition includes `Catch` → `CompensatePayment` → `ReleaseInventory` on te
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md)
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md)
-- [Messaging and async ](../../topics/messaging-async.md)
+- [Messaging and async](../../topics/messaging-async.md)
 - [60-minute runbook](../../topics/interview-runbook-60m.md)

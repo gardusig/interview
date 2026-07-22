@@ -491,5 +491,5 @@ Do not query write DB for high-QPS list screens.
 - [Workflow orchestration](../examples/infra/workflow-orchestration.md)
 - [Cross-service audit logging](../examples/platform/cross-service-audit-logging.md)
 - [AWS reference layout]./aws-reference-layout.md
-- [Messaging & async ](./messaging-async.md)
+- [Messaging & async](./messaging-async.md)
 - [60-minute runbook](./interview-runbook-60m.md)

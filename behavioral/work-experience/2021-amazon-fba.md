@@ -269,5 +269,5 @@ This story is about **reporting-line change**, not a described company reorg or 
 ## 🔗 Related
 
 - [Work experience index](./README.md)
-- [System design hub](https://github.com/gardusig/gardusig/tree/main/public/interview/system-design/README.md)
+- [System design hub](../../system-design/README.md)
 - [Interview prep hub](../../README.md)

@@ -40,4 +40,4 @@
 ## Gaps and detail drills
 
 - **Residual gap:** no dedicated story yet for **sudden leadership priority flip**, **cancelled epic after heavy investment**, or **policy-forced pivot** — answer with **closest authentic anchor** + explicit boundary (catalog = dependency/launch risk; Go = customer gate; FBA manager = reporting-line change only).
-- **AWS tenure / why leave / short tenure** (meta, not STAR): use [current situation — public Q&A](../../work-experience/current-situation.md#-public-qa-lines); technical Connect stories stay in [Amazon Connect (2025)](../../work-experience/2025-aws-connect.md).
+- **AWS tenure / why leave / short tenure** (meta, not STAR): keep answers short and forward-looking; technical Connect stories stay in [Amazon Connect (2025)](../../work-experience/2025-aws-connect.md).

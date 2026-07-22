@@ -498,6 +498,6 @@ Interview anti-pattern: storing entire object inline in metadata DB.
 - [Examples hub](./README.md)
 - [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Video on demand platform](../media/video-on-demand-platform.md)
-- [Cloud services ](../../topics/cloud-services.md)
-- [Data stores ](../../topics/data-stores.md)
+- [Cloud services](../../topics/cloud-services.md)
+- [Data stores](../../topics/data-stores.md)
 - [60-minute runbook](../../topics/interview-runbook-60m.md)

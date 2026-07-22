@@ -22,7 +22,7 @@
 
 - **Team size (estimate):** *TBD — fill from memory.*
 - **Project scope:** Public profile and catalog-adjacent flows on **serverless** AWS; cross-team catalog launch dependencies (see stories).
-- **Reporting / org change (explicit):** This role file does **not** document a **team reorg** or a **manager / reporting-line handoff** arc for Game-Based Learning. Adaptation here is **cross-team dependency risk** and **scope expansion** (see stories). **Tenure-end / why leave / Brazil** public framing lives in [`./current-situation.md`](./current-situation.md); **Connect (2025)** technical stories in [`./2025-aws-connect.md`](./2025-aws-connect.md).
+- **Reporting / org change (explicit):** This role file does **not** document a **team reorg** or a **manager / reporting-line handoff** arc for Game-Based Learning. Adaptation here is **cross-team dependency risk** and **scope expansion** (see stories). Keep **tenure-end / why leave / Brazil** framing short and public-safe in live answers; **Connect (2025)** technical stories in [`./2025-aws-connect.md`](./2025-aws-connect.md).
 
 ## Architecture
 
@@ -195,5 +195,5 @@ Enable reliable LinkedIn previews (title, description, badge image) without intr
 ## 🔗 Related
 
 - [Work experience index](./README.md)
-- [System design hub](https://github.com/gardusig/gardusig/tree/main/public/interview/system-design/README.md)
+- [System design hub](../../system-design/README.md)
 - [Interview prep hub](../../README.md)

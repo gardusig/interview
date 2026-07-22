@@ -2,7 +2,7 @@
 
 **Parent:** [`../README.md`](../README.md)
 
-One **focused page per commonly drawn AWS service** — when to use it, billing units, a small topology sketch, and links to full product examples. Not a replacement for [`topics/aws-reference-layout.md`](../topics/aws-reference-layout.md) (composite pattern) or [`topics/cloud-services.md`](../topics/cloud-services.md) (multi-cloud matrix).
+One **focused page per commonly drawn AWS service** — when to use it, billing units, a small topology sketch, and links to full product examples. Not a replacement for [`topics/aws-reference-layout.md`](../../topics/aws-reference-layout.md) (composite pattern) or [`topics/cloud-services.md`](../../topics/cloud-services.md) (multi-cloud matrix).
 
 **Template:** [`../../topics/aws-service-drill-template.md`](../../topics/aws-service-drill-template.md)
 **Comfort scores:** [`../../topics/cloud-capability-matrix.md`](../../topics/cloud-capability-matrix.md)
