@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 
 permissions:
   contents: write
@@ -13,18 +13,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - run: docker build --target resume -t interview-resume -f .github/docker/Dockerfile .
       - run: docker run --name resume-build interview-resume
-      - run: docker cp resume-build:/workspace/resume/. resume/
-      - run: docker rm resume-build
+      - name: Copy PDFs from container
+        run: |
+          mkdir -p artifacts
+          docker cp resume-build:/workspace/resume/. /tmp/resume-out/
+          docker rm resume-build
+          shopt -s nullglob
+          pdfs=(/tmp/resume-out/*.pdf)
+          if [[ ${#pdfs[@]} -eq 0 ]]; then
+            echo "No PDFs produced under /workspace/resume/" >&2
+            ls -la /tmp/resume-out/ >&2 || true
+            exit 1
+          fi
+          cp "${pdfs[@]}" artifacts/
+          ls -la artifacts/
 
       - uses: actions/upload-artifact@v4
         with:
           name: resumes
-          path: resume/*.pdf
+          path: artifacts/*.pdf
           if-no-files-found: error
 
       - uses: softprops/action-gh-release@v2
         with:
-          files: resume/*.pdf
+          files: artifacts/*.pdf
+          fail_on_unmatched_files: true
           generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

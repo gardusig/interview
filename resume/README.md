@@ -18,4 +18,4 @@ latexmk -pdf resume/general.tex
 ## CI
 
 - **PR:** builds `.github/docker/Dockerfile` stage `resume` and compiles all `resume/*.tex`.
-- **Release** (`v*` tags): copies PDFs out of the container, uploads the `resumes` artifact, and attaches them to the GitHub release.
+- **Release** (any git tag): uploads `resumes` as a downloadable Actions artifact and attaches the PDFs to the GitHub release for that tag.
