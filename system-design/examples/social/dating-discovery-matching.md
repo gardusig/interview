@@ -6,7 +6,7 @@ A dating app shows users a **personalized candidate queue** to swipe on (like/pa
 
 **Primary users:** daters (swipe, match, chat), trust/safety (blocklist, reports), operators (candidate quality, match rate dashboards).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **candidate generation + mutual match**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **candidate generation + mutual match**.
 
 Geo indexing overlaps [maps navigation routing](../logistics/maps-navigation-routing.md); post-match: [chat messenger](./chat-messenger.md); notifications: [notification platform](../platform/notification-platform.md).
 
@@ -524,4 +524,4 @@ B likes A → see like(B→A); query like(A→B) exists → create match
 - [News feed](./news-feed.md)
 - [Maps navigation routing](../logistics/maps-navigation-routing.md)
 - [Notification platform](../platform/notification-platform.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

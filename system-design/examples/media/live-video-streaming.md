@@ -6,7 +6,7 @@ A live video platform ingests a **real-time stream** from a broadcaster, **trans
 
 **Primary users:** creators (go live, health metrics), viewers (watch, rebuffer on loss), operators (transcode capacity, CDN cache hit), moderators (optional live chat via separate service).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **ingest/transcode/live fanout**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **ingest/transcode/live fanout**.
 
 VOD upload/transcode path: [video on demand platform](./video-on-demand-platform.md). Live chat: [chat messenger](../social/chat-messenger.md).
 
@@ -502,5 +502,5 @@ Separate **WebSocket** path ([chat messenger](../social/chat-messenger.md) — d
 - [Video on demand platform](./video-on-demand-platform.md)
 - [Chat messenger](../social/chat-messenger.md)
 - [Object storage](../infra/object-storage.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md) (CloudFront path)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md) (CloudFront path)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

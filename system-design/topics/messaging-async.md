@@ -1,129 +1,69 @@
-# 📬 Queue, async processing, and messaging
+# 📬 Queues, streams, and async messaging
 
 ## 📇 Index
 
-1. [5. Queue & async processing & messaging](#5-queue--async-processing--messaging)
+1. [Delivery semantics](#delivery-semantics)
+2. [Queue vs stream vs pub/sub](#queue-vs-stream-vs-pubsub)
+3. [Partitioning and ordering](#partitioning-and-ordering)
+4. [Batching and DLQs](#batching-and-dlqs)
+5. [Product comparison](#product-comparison)
+6. [Workflow orchestration](#workflow-orchestration)
 
-Delivery semantics, partitioning, topics, DLQs, and **workflow-style orchestration**. Maps to **Amazon MSK**, **Amazon EventBridge**, **Amazon SQS**, **Amazon SNS**, **Amazon Kinesis Data Streams**, and **AWS Step Functions** on AWS.
+Delivery semantics, partitioning, DLQs, and orchestration. Maps to **Amazon SQS**, **Amazon SNS**, **Amazon MSK**, **Amazon Kinesis**, **Amazon EventBridge**, **AWS Step Functions**.
 
-## 5. Queue & Async Processing & Messaging
+User-facing push (email/push/SMS) is covered in [notifications.md](./notifications.md)—this file is the **transport** layer.
 
-### Delivery Semantics
+## Delivery semantics
 
-* **At-most-once**
- * Messages may be lost
- * No retries
- * Used when loss is acceptable (metrics, logs)
-* **At-least-once** (most common)
- * Messages are retried until acknowledged
- * Duplicates possible
- * Requires idempotent consumers
-* **Exactly-once** (rare)
- * No loss, no duplicates
- * Requires coordination across producer, broker, and consumer
- * High latency and complexity
+* **At-most-once** — may lose; no retries (metrics fire-and-forget).
+* **At-least-once** — retries until ack; **duplicates**; need idempotent consumers (default interview answer).
+* **Exactly-once** — end-to-end is rare/expensive; usually “effectively once” via idempotency keys + dedupe store.
 
-### Partitioning
+## Queue vs stream vs pub/sub
 
-* Messages are split across **partitions** (or shards)
-* Each partition is consumed by **only one consumer at a time**
-* Enables horizontal scalability
+| Pattern | Behavior | Pick when |
+| --- | --- | --- |
+| **Queue** (competing consumers) | Each message → one worker | Jobs, retries, backlog smoothing |
+| **Pub/sub** | One publish → many subscriptions | Fan-out (notify search, cache, analytics) |
+| **Log / stream** | Durable ordered partitions; replay | Event sourcing-ish, multiple consumer groups, reprocess |
 
-**Tradeoffs**
-* More partitions → higher throughput
-* Fewer partitions → stronger ordering
-* Hot keys can overload a single partition
+## Partitioning and ordering
 
-### Parallel Processing via Partitioned Queues
+* Hash a stable key (`user_id`, `order_id`) → partition/shard.
+* Same key ⇒ same partition ⇒ sequential processing without distributed locks.
+* More partitions ⇒ throughput; hot keys still hurt.
 
-Partitioned queues enable safe parallelism without locks by guaranteeing that all messages with the same key are processed sequentially by a single consumer.
+## Batching and DLQs
 
-> Hash a stable key (e.g. ad_id, user_id, trip_id) to determine which partition a message belongs to.
-> `partition = hash(key) % N`
+* Poll/process in **batches** for efficiency; tune size vs latency.
+* **DLQ** after N failures — poison pills must not block the main queue.
+* Alert on DLQ depth; runbook to replay or discard.
 
-All events with the same key:
-- Go to the same partition
-- Are consumed in order
+## Product comparison
 
-### Batch Processing
+| Product | Model | Interview fit |
+| --- | --- | --- |
+| **SQS** | Managed queue; standard (best-effort) or FIFO | Simple async work, buffering API → workers |
+| **SNS** | Pub/sub topics → SQS/Lambda/HTTP | Fan-out + filter policies |
+| **EventBridge** | Event bus + rules | SaaS/AWS event routing, scheduled rules |
+| **MSK (Kafka)** | Durable log, consumer groups, replay | Multi-subscriber event platform |
+| **Kinesis Data Streams** | AWS-native shards | AWS-centric streaming + Lambda/Flink |
+| **RabbitMQ** (portable) | Broker queues/exchanges | Classic microservice messaging (name in prose) |
 
-Consumers should poll messages in batches to reduce overhead.
+**SQS vs Kafka:** SQS = “get work done once”; Kafka = “many systems read the same history.”
 
-Benefits:
-- Fewer network calls
-- Fewer DB writes
-- Better CPU cache locality
+**MSK vs Kinesis:** Kafka ecosystem / multi-consumer log → MSK; AWS-native shard stream → Kinesis.
 
-Tradeoff:
-- Slightly higher latency
-- Requires tuning batch size and flush interval
+## Workflow orchestration
 
-### Dead-Letter Queues (DLQ)
-
-* Messages that repeatedly fail processing are moved aside
-* Prevent poison messages from blocking progress
-
-**Common triggers**
-* Exceeded retry limit
-* Validation errors
-* Schema incompatibility
-
-### Topics (Publish–Subscribe)
-
-* Logical event stream supporting **fan-out**
-* Messages are written once and consumed by **multiple consumer groups**
-* Each consumer group processes all partitions independently
-
-Why this matters:
-- Decouples producers from downstream logic
-- Enables independent scaling
-- Prevents cascading failures
-- Allows different SLAs per consumer
-
-### Priority Queues
-
-* Messages processed based on importance, not arrival time
-
-**Implementations**
-* Separate queues/topics per priority
-* Priority field + consumer-side scheduling
-
-**Use cases**
-* User-facing requests over background jobs
-* SLA-sensitive workflows
-
-**Tradeoff**
-* Priority handling increases system complexity
-* Risk of starving low-priority messages
-
----
-
-### Amazon MSK vs Amazon Kinesis Data Streams
-
-Both are **real AWS** stream products; interviewers often ask when to pick which.
-
-**Amazon MSK (Apache Kafka)** — Durable **log** with **topics** and **partitions**, **consumer groups**, replay by offset, rich ecosystem (Kafka Connect, stream processors). Strong fit when you need **multiple independent consumers** on the same log, **ordering per partition**, and **replay** for reprocessing or new services.
-
-**Amazon Kinesis Data Streams** — Managed **shards** with **ordered records per shard**, multiple consumers via **enhanced fan-out** or classic iterator model. Strong fit when you already standardize on AWS-native streaming, **simple producers** (e.g. SDK PutRecord), and **Lambda or Flink** consumers; different operational and ecosystem tradeoffs than Kafka.
-
-**Rule of thumb:** If the problem screams “Kafka” (consumer groups, compacted topics, cross-vendor skills), **MSK** is the honest AWS answer. If the problem is “AWS-native firehose of events with shard scaling,” discuss **Kinesis**. Do not invent hybrid names—stick to documented products.
-
----
-
-### Workflow and orchestration
-
-Long-running or multi-step processes (sagas, human steps, compensations) are often modeled with a **workflow engine** instead of embedding all state in application code.
-
-**AWS Step Functions** — Visual/state-machine style workflows, **Standard** (durable, auditable, longer execution) vs **Express** (high volume, short duration, different durability semantics). Integrates with **AWS Lambda**, **Amazon DynamoDB**, **Amazon SNS**, **Amazon SQS**, and other AWS APIs. Good interview answer when steps are **explicit**, **retryable**, and **observable** as a state machine.
-
-**Portable / industry analogies** (do **not** put proprietary names on AWS-only diagrams): **Temporal** and **Cadence** are common in large microservice shops for code-first durable execution; **Apache Airflow** is **batch / DAG scheduling**, not a drop-in replacement for request-driven sagas. Name these in **prose** when comparing patterns, not as fake AWS services.
-
-Design points: **idempotent activities**, **timeouts**, **compensation** on failure, and **external** callbacks (webhooks) tied with correlation IDs (see [observability.md](./observability.md)).
+Multi-step sagas: **Step Functions** (Standard vs Express), or portable **Temporal**-style durable execution (prose). Design: idempotent activities, timeouts, compensation, correlation IDs ([observability.md](./observability.md)).
 
 ## 🔗 Related
 
 - [Topics index](../topics-index.md)
+- [Notifications](./notifications.md)
 - [Reliability](./reliability.md)
 - [Observability](./observability.md)
+- [On-call operations](./oncall-operations.md)
 - [Compute](./compute.md)
-- [AWS reference layout]./aws-reference-layout.md
+- [AWS reference layout](./aws-reference-layout.md)

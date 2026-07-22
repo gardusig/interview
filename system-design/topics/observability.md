@@ -2,90 +2,78 @@
 
 ## 📇 Index
 
-1. [6. Observability](#6-observability)
+1. [Signals](#signals)
+2. [Logs](#logs)
+3. [Metrics and SLOs](#metrics-and-slos)
+4. [Alarms that page](#alarms-that-page)
+5. [Tracing](#tracing)
+6. [Correlation and debug practice](#correlation-and-debug-practice)
+7. [Analytics planes](#analytics-planes)
 
-Logs, metrics, traces, correlation, and how they support **analytics** and **debugging**. Maps to **Amazon CloudWatch**, **AWS X-Ray**, **Amazon OpenSearch Service**, **AWS CloudTrail**, and **OpenTelemetry**-compatible tooling.
+Logs, metrics, traces, and **actionable alarms**. Maps to **CloudWatch**, **X-Ray**, **OpenSearch**, **CloudTrail**, OpenTelemetry.
 
-## 6. Observability
+Automated response to alarms → [oncall-operations.md](./oncall-operations.md).
 
-> “Why is the system behaving the way it is?”
+## Signals
 
-### Signals
+| Signal | Answers |
+| --- | --- |
+| **Logs** | What happened on this request / entity? |
+| **Metrics** | Is the system healthy *now* and trending? |
+| **Traces** | Where did latency / errors accumulate? |
 
-* **Logs**:
- * Debugging specific failures
- * Auditing and forensics
-* **Metrics**:
- * Alerting
- * Capacity planning
- * Trend analysis
-* **Traces**:
- * Root-cause analysis
- * Identifying latency bottlenecks
- * Understanding service interactions
+## Logs
 
-### Structured logging and aggregation
+Prefer **structured** JSON (`service`, `level`, `trace_id`, `user_id`, `error_code`).
 
-Prefer **structured logs** (JSON or key-value fields) over opaque strings so you can search and aggregate by `service`, `user_id`, `trip_id`, `error_code`, etc.
+**AWS:** CloudWatch Logs + Insights; long retention → S3; heavy search → OpenSearch.
 
-**AWS:** **Amazon CloudWatch Logs** for collection and retention; **CloudWatch Logs Insights** for ad hoc queries. Export to **Amazon S3** for long retention or **Amazon OpenSearch Service** for heavier search and dashboards.
+## Metrics and SLOs
 
-**Portable / SaaS:** ELK stack (Elasticsearch, Logstash, Kibana), Grafana Loki, Datadog, Splunk—same concepts, different hosting.
+Instrument **RED** (rate, errors, duration) or **USE** (utilization, saturation, errors).
 
-### Metrics and alerting
+Define **SLIs** (e.g. availability, p99 latency) and **SLOs**; alert on **burn rate** / symptoms, not only CPU.
 
-Instrument **RED**-style (rate, errors, duration) or **USE** (utilization, saturation, errors) per service. Alert on **SLO burn** and **symptoms** (latency, error rate, consumer lag), not only on CPU.
+Custom metrics from ECS/Lambda; business metrics (orders/min) alongside infra.
 
-**AWS:** **Amazon CloudWatch** metrics and alarms; **AWS Lambda** and **Amazon ECS** built-in metrics; custom metrics via API or embedded metric format.
+## Alarms that page
 
-### Distributed tracing
+Good pages are **rare, actionable, and owned**.
 
-Traces stitch together **spans** across API Gateway, Lambda, ECS tasks, **AWS Step Functions**, and downstream databases.
+| Do | Don't |
+| --- | --- |
+| Alert on **user symptom** (5xx rate, checkout latency, queue lag, DLQ depth) | Page on every CPU blip |
+| Include **runbook link** + dashboard | Vague “something wrong” |
+| Severity: page vs ticket vs log | Everything = Sev1 |
+| Multi-window / anomaly to cut noise | Single noisy threshold forever |
 
-**AWS:** **AWS X-Ray** integrates with many AWS services; **OpenTelemetry** (OTel) is the vendor-neutral standard—export to X-Ray, Jaeger, or SaaS APM.
+**Composite alarms** (CloudWatch) and **anomaly detection** reduce flapping. Pair with ticket auto-create for non-urgent.
 
-**Portable:** Jaeger, Zipkin, Grafana Tempo.
+**AWS:** CloudWatch Alarms → SNS → PagerDuty/Opsgenie/Slack; Lambda for enrichment.
 
-### Analytics over logs and data lakes
+## Tracing
 
-For **product** or **operations** analytics (funnels, aggregates over days of data), logs and events often land in **object storage** and are queried with SQL engines.
+Spans across Gateway → compute → DB/queue. **X-Ray** or **OpenTelemetry** → Jaeger/Tempo/SaaS.
 
-**AWS:** **Amazon S3** + **AWS Glue** (catalog, ETL) + **Amazon Athena** (SQL over S3); **Amazon Redshift** for warehouse workloads; **Amazon Kinesis Data Firehose** (or **Amazon Data Firehose**) to load streams into S3 or OpenSearch.
+## Correlation and debug practice
 
-**Other clouds (interview translation):** BigQuery, Snowflake, Azure Synapse—same **lake / warehouse** story.
+* Generate **correlation / trace id** at the edge; propagate on HTTP and message headers; never regenerate mid-flight.
+* Spike → filter by `trace_id` → span timeline → offending dependency.
+* Profilers (pprof, async-profiler) for CPU hotspots.
+* Feature flags / shadow traffic to reproduce safely.
+* Stream **replay** into a shadow consumer for event bugs.
 
-### Stream analytics
+## Analytics planes
 
-For **windowed aggregations** or **CEP** over high-volume streams, use a stream processor (**Apache Flink**, **Amazon Managed Service for Apache Flink**, **ksqlDB** with Kafka) rather than overloading OLTP databases.
+Product analytics ≠ on-call metrics. Lake/warehouse: S3 + Glue + Athena / Redshift; stream windows via Flink. Do not overload OLTP for heavy aggregates.
 
-### Correlation IDs
-
-* Unique identifier per request
-* Propagated via headers and async messages
-
-**Why**
-* Tie logs, metrics, and traces together
-* Essential for debugging distributed systems
-
-**Best practices**
-* Generate at system entry
-* Never regenerate mid-flow
-* Include in logs automatically
-
-### Debugging practice (beyond dashboards)
-
-* **Logs + trace ID:** jump from a spike in errors to a single `trace_id` and span timeline.
-* **Profiling:** for CPU-bound services, language profilers (**pprof** for Go, **async-profiler** for JVM) find hot paths—not a replacement for traces.
-* **Feature flags:** safely reproduce production behavior for a cohort (**AWS AppConfig** or portable vendors) without redeploying.
-* **Replay:** for event-driven systems, **replay** a partition or time window into a **shadow consumer** (MSK/Kinesis) to debug without affecting live state.
-
-### Audit and API activity
-
-**AWS CloudTrail** records **control plane** API calls (who changed IAM, created buckets). Distinguish from application request logs (CloudWatch / ALB access logs).
+**Audit:** CloudTrail = control plane; ALB/app logs = data plane.
 
 ## 🔗 Related
 
 - [Topics index](../topics-index.md)
-- [Data stores](./data-stores.md)
+- [On-call operations](./oncall-operations.md)
 - [Messaging and async](./messaging-async.md)
-- [AWS reference layout]./aws-reference-layout.md
+- [Reliability](./reliability.md)
+- [Data stores](./data-stores.md)
+- [AWS reference layout](./aws-reference-layout.md)

@@ -6,7 +6,7 @@ A news feed (home timeline) shows **posts from people you follow**, ordered by t
 
 **Primary users:** authors (post content), readers (scroll home/profile feeds), operators (fan-out lag, celebrity tier config).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **fanout strategy (read vs write)**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **fanout strategy (read vs write)**.
 
 ## Requirements discovery (interview theater)
 
@@ -495,10 +495,10 @@ Post from user with 50M followers:
 ## Related
 
 - [Examples hub](./README.md)
-- [Authoring template (v3)](../../patterns/example-authoring-template.md)
+- [Authoring template (v3)](../../topics/example-authoring-template.md)
 - [Topics index](../../topics-index.md)
 - [Chat messenger](./chat-messenger.md)
 - [Dating discovery matching](./dating-discovery-matching.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Caching](../../topics/caching.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

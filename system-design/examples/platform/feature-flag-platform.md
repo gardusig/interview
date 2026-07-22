@@ -6,7 +6,7 @@ A feature flag platform lets teams **roll out**, **target**, and **kill** behavi
 
 **Primary users:** product engineers (define rules), runtime services (SDK evaluate), operators (kill switch, rollback), compliance (audit who changed what).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **control-plane propagation + rollback**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **control-plane propagation + rollback**.
 
 Distinct from [API gateway rate limiting](./api-gateway-rate-limiting.md) (traffic policy) and [notification platform](./notification-platform.md) (user messages).
 
@@ -549,4 +549,4 @@ Interview: payment-risk flags → `closed`; UI tint → `open`.
 - [Rate limiter](./rate-limiter.md)
 - [Cross-service audit logging](./cross-service-audit-logging.md)
 - [Notification platform](./notification-platform.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

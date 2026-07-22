@@ -6,7 +6,7 @@ A securities trading platform matches **buy/sell orders**, maintains an **order 
 
 **Primary users:** traders (place/cancel), market makers (quotes), compliance (halt, surveillance).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **order book + matching + market data fanout**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **order book + matching + market data fanout**.
 
 Distinct from [core banking ledger](./core-banking-ledger.md) (post-trade balances) and [payment workflow](./payment-workflow-platform.md).
 

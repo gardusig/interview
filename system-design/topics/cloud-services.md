@@ -77,7 +77,7 @@ Rough **equivalence only**; verify in vendor docs before any real architecture d
 - [Examples hub](../examples/README.md)
 - [Event ticketing (example)](../examples/commerce/event-ticketing.md)
 - [Collaborative document (example)](../examples/social/collaborative-document.md)
-- [AWS reference layout](../patterns/aws-reference-layout.md)
+- [AWS reference layout](./aws-reference-layout.md)
 - [Data stores](./data-stores.md)
 - [Messaging and async](./messaging-async.md)
 - [Edge and ingress](./edge-and-ingress.md)

@@ -6,7 +6,7 @@ A collaborative document editor lets multiple users **edit the same doc in real 
 
 **Primary users:** editors (write/read), guests (comment/view), operators (shard health, large-doc migrations), security (ACL, share links).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **OT/CRDT + session routing**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **OT/CRDT + session routing**.
 
 Realtime transport patterns overlap [chat messenger](./chat-messenger.md); ordered sessions differ from [news feed](./news-feed.md) fan-out.
 
@@ -491,6 +491,6 @@ Example: A inserts at 10, B deletes 5–8 concurrently — server produces trans
 - [Chat messenger](./chat-messenger.md)
 - [Real-time delivery tracking](../logistics/real-time-delivery-tracking.md)
 - [News feed](./news-feed.md)
-- [Concurrency ](../../topics/concurrency.md)
-- [API design ](../../topics/api-design.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [Concurrency](../../topics/concurrency.md)
+- [API design](../../topics/api-design.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

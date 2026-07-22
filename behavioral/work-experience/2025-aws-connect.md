@@ -28,7 +28,7 @@
 
 - **Team size (estimate):** *TBD — fill from memory.*
 - **Project scope:** **Multi-region** Connect control plane; high-risk **SDK** and **deployment safety** work (see stories).
-- **Reporting change:** **One manager handoff** during this engagement (same charter, new manager). Public-facing current-situation context lives in [`./current-situation.md`](./current-situation.md), separate from the technical stories above.
+- **Reporting change:** **One manager handoff** during this engagement (same charter, new manager). Keep tenure-end / why-leave framing short and public-safe in live answers; technical stories stay in this file.
 
 ## Architecture
 
@@ -362,6 +362,6 @@ Ensure reliable, deterministic multi-region deployments while reducing operation
 ## 🔗 Related
 
 - [Work experience index](./README.md)
-- [Current situation (public-safe)](./current-situation.md)
-- [System design hub](https://github.com/gardusig/gardusig/tree/main/public/interview/system-design/README.md)
+- [Work experience index](./README.md)
+- [System design hub](../../system-design/README.md)
 - [Interview prep hub](../../README.md)

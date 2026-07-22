@@ -6,7 +6,7 @@ A maps navigation service computes **driving routes** over a **road graph**, app
 
 **Primary users:** drivers (navigation clients), logistics apps (route API), operators (graph updates, traffic feed health), map data teams (segment closures).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **routing graph + traffic updates**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **routing graph + traffic updates**.
 
 ETA along an active route: [ETA prediction service](./eta-prediction-service.md). Geo discovery: [dating discovery matching](../social/dating-discovery-matching.md).
 
@@ -509,5 +509,5 @@ Mixing tile generation into route servers causes noisy neighbor on navigation sp
 - [ETA prediction service](./eta-prediction-service.md)
 - [Real-time delivery tracking](./real-time-delivery-tracking.md)
 - [Dating discovery matching](../social/dating-discovery-matching.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md) (CDN)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md) (CDN)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

@@ -6,7 +6,7 @@ A **sequential replica digestion worker** closes gaps between two databases: **B
 
 **Primary users:** platform operators (lag dashboards, alerts, tuning), data engineers (backfill after outages), SRE (capacity and store protection).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **MEX discovery + adaptive polling + lag estimation**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **MEX discovery + adaptive polling + lag estimation**.
 
 Distinct from [stream processing platform](../event-driven/stream-processing-platform.md) (continuous partitioned streams with windowed state) and from [distributed job scheduler](./distributed-job-scheduler.md) (lease-based job runs, not ID-gap closure on a replica).
 
@@ -550,10 +550,10 @@ Automate binary search on `T` given SLA: find minimum `T` such that `gap(t + SLA
 
 ## Related
 
-- [Authoring template (v3)](../../patterns/example-authoring-template.md) — infra parsed requirements (`G`, `SLA`, `X`)
+- [Authoring template (v3)](../../topics/example-authoring-template.md) — infra parsed requirements (`G`, `SLA`, `X`)
 - [Topics index](../../topics-index.md)
 - [Stream processing platform](../event-driven/stream-processing-platform.md) — continuous windows vs poll-based gap closure
 - [Distributed job scheduler](./distributed-job-scheduler.md) — leases for job runs, analogous lease patterns for range batches
 - [Cross-service audit logging](./cross-service-audit-logging.md) — immutable log vs mutable projection on C
-- [System catalog](../../prep/system-catalog.md) — row for this worker
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [System catalog](../../topics/system-catalog.md) — row for this worker
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

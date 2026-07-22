@@ -4,8 +4,8 @@
 
 Interview-style **system designs** for the full 60-minute loop. Each file is one practice round: clarify requirements → estimate scale and cost → draw **user → database** → APIs and storage → one deep dive.
 
-**Authoring contract:** [`../patterns/example-authoring-template.md`](../patterns/example-authoring-template.md)
-**Patterns (not product rounds):** [`../patterns/aws-reference-layout.md`](../patterns/aws-reference-layout.md), [`../patterns/event-driven-architecture.md`](../patterns/event-driven-architecture.md)
+**Authoring contract:** [`../topics/example-authoring-template.md`](../topics/example-authoring-template.md)
+**Architecture patterns:** [`../topics/aws-reference-layout.md`](../topics/aws-reference-layout.md), [`../topics/event-driven-architecture.md`](../topics/event-driven-architecture.md)
 
 ## Browse by domain
 
@@ -21,7 +21,7 @@ Interview-style **system designs** for the full 60-minute loop. Each file is one
 | [`infra/`](./infra/README.md) | Object storage, workflows, CRUD, file sync | [`object-storage.md`](./infra/object-storage.md) |
 | [`aws/`](./aws/README.md) | **Service drills** — S3, DynamoDB, Lambda, SQS, … (not full product rounds) | [`s3.md`](./aws/s3.md) |
 
-**Famous apps (A–Z):** [`famous-apps-index.md`](./famous-apps-index.md) · **By company:** [`../prep/high-profit-app-coverage.md`](../prep/high-profit-app-coverage.md)
+**Famous apps (A–Z):** [`famous-apps-index.md`](./famous-apps-index.md) · **By company:** [`../topics/high-profit-app-coverage.md`](../topics/high-profit-app-coverage.md)
 
 ## What every example includes (interview-ready)
 
@@ -41,9 +41,28 @@ Interview-style **system designs** for the full 60-minute loop. Each file is one
 | [`social/news-feed.md`](./social/news-feed.md) | Social | Fanout (read vs write) |
 | [`platform/sequential-replica-digestion.md`](./platform/sequential-replica-digestion.md) | Platform / replication | MEX + adaptive polling + lag |
 
-When editing another example, diff against a gold sibling in the same domain folder. Diagram palette and layout: [`../patterns/architecture-diagram-conventions.md`](../patterns/architecture-diagram-conventions.md).
+When editing another example, diff against a gold sibling in the same domain folder. Diagram palette and layout: [`../topics/architecture-diagram-conventions.md`](../topics/architecture-diagram-conventions.md).
 
 **Platform utility bucket** (custom user→database diagrams + cost at a glance + AWS meters): all files under [`platform/`](./platform/README.md).
+
+## Modern expectations (nowadays)
+
+Use this checklist when refreshing any example so it matches current interview answers and [`../topics/`](../topics/README.md):
+
+| Expectation | Topic |
+| --- | --- |
+| Store choice with a 3-row compare (why this DB) | [`data-stores.md`](../topics/data-stores.md) |
+| Cache-aside + stampede/TTL; CDN vs Redis | [`caching.md`](../topics/caching.md) |
+| Outbox/CDC for side effects; DLQ | [`messaging-async.md`](../topics/messaging-async.md), [`event-driven-architecture.md`](../topics/event-driven-architecture.md) |
+| Notifications off the hot path; prefs | [`notifications.md`](../topics/notifications.md) |
+| CDN + BFF / optimistic UI where relevant | [`frontend-strategies.md`](../topics/frontend-strategies.md) |
+| OTel traces + RED + SLO burn paging | [`observability.md`](../topics/observability.md) |
+| Canary / blue-green + auto-rollback | [`deployment.md`](../topics/deployment.md) |
+| Alarm → automation before waking humans | [`oncall-operations.md`](../topics/oncall-operations.md) |
+
+**Recently refreshed for 2025–26 practice:** [`commerce/product-search.md`](./commerce/product-search.md) (hybrid BM25+vector), [`logistics/rideshare-matching.md`](./logistics/rideshare-matching.md), [`platform/identity-session-service.md`](./platform/identity-session-service.md) (passkeys), [`social/feed-ranking-service.md`](./social/feed-ranking-service.md) (ANN + shadow models).
+
+**Still thin (stubs — expand next):** LinkedIn / WhatsApp / X timelines, Discord/Slack, Zoom, ads RTB, subscription billing, email deliverability, travel/auction/Pinterest-style commerce, Stories. Prefer promoting these to v3 over polishing golds again.
 
 ## Full inventory
 
@@ -103,12 +122,12 @@ When editing another example, diff against a gold sibling in the same domain fol
 | [`commerce/visual-discovery-platform.md`](./commerce/visual-discovery-platform.md) | commerce | Commerce | Pinterest | — |
 
 See [`aws/README.md`](./aws/README.md) for per-service drills (S3, DynamoDB, Lambda, …).
-**Company routing:** [`../prep/high-profit-app-coverage.md`](../prep/high-profit-app-coverage.md) (Google, Meta, Amazon, fintech, …).
+**Company routing:** [`../topics/high-profit-app-coverage.md`](../topics/high-profit-app-coverage.md) (Google, Meta, Amazon, fintech, …).
 
 ## Related
 
-- [System catalog](../prep/system-catalog.md)
-- [High-profit app coverage](../prep/high-profit-app-coverage.md)
+- [System catalog](../topics/system-catalog.md)
+- [High-profit app coverage](../topics/high-profit-app-coverage.md)
 - [AWS service drills](./aws/README.md)
 - [Topics index](../topics-index.md)
-- [60-minute runbook](../prep/interview-runbook-60m.md)
+- [60-minute runbook](../topics/interview-runbook-60m.md)

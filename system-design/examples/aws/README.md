@@ -2,10 +2,10 @@
 
 **Parent:** [`../README.md`](../README.md)
 
-One **focused page per commonly drawn AWS service** — when to use it, billing units, a small topology sketch, and links to full product examples. Not a replacement for [`patterns/aws-reference-layout.md`](../patterns/aws-reference-layout.md) (composite pattern) or [`topics/cloud-services.md`](../topics/cloud-services.md) (multi-cloud matrix).
+One **focused page per commonly drawn AWS service** — when to use it, billing units, a small topology sketch, and links to full product examples. Not a replacement for [`topics/aws-reference-layout.md`](../../topics/aws-reference-layout.md) (composite pattern) or [`topics/cloud-services.md`](../../topics/cloud-services.md) (multi-cloud matrix).
 
-**Template:** [`../../patterns/aws-service-drill-template.md`](../../patterns/aws-service-drill-template.md)
-**Comfort scores:** [`../../prep/cloud-capability-matrix.md`](../../prep/cloud-capability-matrix.md)
+**Template:** [`../../topics/aws-service-drill-template.md`](../../topics/aws-service-drill-template.md)
+**Comfort scores:** [`../../topics/cloud-capability-matrix.md`](../../topics/cloud-capability-matrix.md)
 
 ## If the interviewer says…
 
@@ -47,6 +47,6 @@ One **focused page per commonly drawn AWS service** — when to use it, billing 
 
 ## Related
 
-- [High-profit app coverage](../../prep/high-profit-app-coverage.md)
+- [High-profit app coverage](../../topics/high-profit-app-coverage.md)
 - [Topics index](../../topics-index.md)
 - [Product examples](../README.md)

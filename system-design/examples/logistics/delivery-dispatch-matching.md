@@ -6,7 +6,7 @@ Delivery dispatch matching assigns **open delivery jobs** to available couriers 
 
 **Primary users:** customers/merchants (assignment status), couriers (accept/decline offers), dispatch operators (unmatched queue, manual assign), matching engineers (scoring weights).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **assignment scoring + retry loop**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **assignment scoring + retry loop**.
 
 Live map tracking after assign: [real-time delivery tracking](./real-time-delivery-tracking.md). ETA inputs: [ETA prediction service](./eta-prediction-service.md).
 
@@ -533,4 +533,4 @@ score = w1 * pickup_distance_m
 - [ETA prediction service](./eta-prediction-service.md)
 - [Shopping cart checkout](../commerce/shopping-cart-checkout.md)
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md) (retry/lease analogy)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

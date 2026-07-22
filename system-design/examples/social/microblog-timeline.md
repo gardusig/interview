@@ -6,7 +6,7 @@ A microblog serves a **home timeline** of short posts from follows, plus **globa
 
 **Company anchors:** X (Twitter), Threads (Meta).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **timeline merge + hot-key fanout**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **timeline merge + hot-key fanout**.
 
 ## Requirements discovery
 

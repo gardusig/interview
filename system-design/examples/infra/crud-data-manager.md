@@ -6,7 +6,7 @@ A CRUD data manager is a **multi-tenant SaaS backend** for structured business r
 
 **Primary users:** tenant admins (schema, roles), integrators (REST API), auditors (change history), platform operators (noisy-neighbor, reindex jobs).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **multi-tenant authz + query/index model**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **multi-tenant authz + query/index model**.
 
 Audit patterns: [cross-service audit logging](../platform/cross-service-audit-logging.md). API edge: [API gateway rate limiting](../platform/api-gateway-rate-limiting.md).
 
@@ -521,4 +521,4 @@ Could use Mongo/Dynamo with GSIs — same access pattern discipline: every query
 - [API gateway rate limiting](../platform/api-gateway-rate-limiting.md)
 - [Feature flag platform](../platform/feature-flag-platform.md)
 - [CRUD vs event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

@@ -6,7 +6,7 @@ A video-on-demand (VOD) platform lets creators **upload** long-form video, proce
 
 **Primary users:** creators (upload, processing status), viewers (browse, playback, resume), operators (transcode queue, CDN hit ratio), rights (geo/DRM flags).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **upload/transcode/CDN/catalog**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **upload/transcode/CDN/catalog**.
 
 Live path: [live video streaming](./live-video-streaming.md). Blob storage: [object storage](../infra/object-storage.md). Orchestration: [workflow orchestration](../infra/workflow-orchestration.md).
 
@@ -530,4 +530,4 @@ Playback never hits catalog DB per segment — only manifest fetch + CDN.
 - [Object storage](../infra/object-storage.md)
 - [Workflow orchestration](../infra/workflow-orchestration.md)
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

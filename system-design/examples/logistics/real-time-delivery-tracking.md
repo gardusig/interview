@@ -6,7 +6,7 @@ Real-time delivery tracking shows customers a **live map position** and ETA for 
 
 **Primary users:** customers (track order on map), drivers (background location upload), dispatch ops (stale-location alerts), support (replay last known position).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **stream projection + reconnect semantics**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **stream projection + reconnect semantics**.
 
 Assignment timing lives in [delivery dispatch matching](./delivery-dispatch-matching.md); ETA modeling in [ETA prediction service](./eta-prediction-service.md).
 
@@ -521,4 +521,4 @@ Indexes:
 - [ETA prediction service](./eta-prediction-service.md)
 - [Shopping cart checkout](../commerce/shopping-cart-checkout.md)
 - [Stream processing platform](../event-driven/stream-processing-platform.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

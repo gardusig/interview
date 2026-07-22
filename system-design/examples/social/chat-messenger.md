@@ -6,7 +6,7 @@ A chat messenger delivers **1:1 and group messages** with **per-conversation ord
 
 **Primary users:** end users (send/receive), moderators (report/abuse), operators (gateway scale, lag alerts).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **presence + ordered delivery**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **presence + ordered delivery**.
 
 Transport patterns overlap [collaborative document](./collaborative-document.md) and [real-time delivery tracking](../logistics/real-time-delivery-tracking.md); fan-out differs from [news feed](./news-feed.md).
 
@@ -163,7 +163,7 @@ Say aloud in order (~10 min). Write locks into **parsed requirements** before ca
 
 **Connections:** `C ≈ 0.16 × U` → **80M** at target; sticky gateway **~400k conn/pod** at 200 pods (ballpark).
 
-**History reads:** `0.8 × U × 3 ≈ **1.2B** GETs/day** — pagination by `seq`.
+**History reads:** ~`0.8 × U × 3` ≈ **1.2B** GETs/day — pagination by `seq`.
 
 **Egress (WS + HTTP):** dominated by live push + media URLs; text metadata **~10 TB/day** OLTP.
 
@@ -521,4 +521,4 @@ Do not write typing indicators to message log.
 - [News feed](./news-feed.md)
 - [Notification platform](../platform/notification-platform.md)
 - [Real-time delivery tracking](../logistics/real-time-delivery-tracking.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

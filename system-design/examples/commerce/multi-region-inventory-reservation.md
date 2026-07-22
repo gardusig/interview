@@ -6,7 +6,7 @@ A multi-region inventory reservation service holds **stock pools per region**, g
 
 **Primary users:** checkout and cart services (reserve/confirm), warehouse/ops (pool adjustments), finance (oversell audits), operators (rebalance jobs, partition runbooks).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **region quota vs global consistency**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **region quota vs global consistency**.
 
 Checkout flow context: [shopping cart checkout](./shopping-cart-checkout.md) validates at checkout; this service owns **hold → confirm/release**. Hot-SKU patterns overlap [event ticketing](./event-ticketing.md).
 
@@ -532,4 +532,4 @@ Flash SKU (single row hot spot)
 - [Event ticketing](./event-ticketing.md)
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
 - [Real-time delivery tracking](../logistics/real-time-delivery-tracking.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

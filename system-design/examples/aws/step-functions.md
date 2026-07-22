@@ -64,11 +64,11 @@ flowchart TB
 | Example | How it shows up |
 | --- | --- |
 | [`fintech/payment-workflow-platform.md`](../fintech/payment-workflow-platform.md) | Payment saga |
-| [`platform/workflow-orchestration.md`](../platform/workflow-orchestration.md) | Deep rebuild |
+| [`infra/workflow-orchestration.md`](../infra/workflow-orchestration.md) | Deep rebuild |
 
 ## Related
 
 - [AWS service drills index](./README.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Topics index](../../topics-index.md)
-- [Cloud capability matrix](../../prep/cloud-capability-matrix.md)
+- [Cloud capability matrix](../../topics/cloud-capability-matrix.md)

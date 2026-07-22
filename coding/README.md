@@ -1,4 +1,4 @@
-# gardusig/problem-solving
+# Coding
 
 C++17 **competitive programming** reference — algorithm templates plus **solved contest submissions**.
 
@@ -7,32 +7,34 @@ C++17 **competitive programming** reference — algorithm templates plus **solve
 | [reference/](reference/) | Handbook-style templates (graphs, DP, strings, math, data structures) |
 | [solved/](solved/) | Accepted solutions by platform (`{platform}/{slug}.cpp`) |
 
-**Sibling interview repos:** [`system-design`](../system-design/) · [`professional-experiences`](../professional-experiences/) · **Hub:** [`public/interview/problem-solving/`](https://github.com/gardusig/gardusig/tree/main/public/interview/problem-solving).
+**Sibling folders:** [`system-design`](../system-design/) · [`behavioral`](../behavioral/) · **Hub:** [`coding/`](https://github.com/gardusig/interview/tree/main/coding).
 
 ## Reference topics
 
-- **data-structures/** — 9 templates
-- **graphs/** — 24 templates
-- **math/** — 11 templates
-- **patterns/** — 32 templates
-- **strings/** — 10 templates
+Handbook-style templates aligned with Competitive Programmer's Handbook / CP-Algorithms staples:
+
+- **data-structures/** — Fenwick (1D/2D), segtree (sum/lazy/persistent), DSU (+rollback), sparse table, treap (+implicit), Li Chao, wavelet, binary/XOR trie, sqrt decomp
+- **graphs/** — BFS/DFS, shortest paths, MST, SCC, bridges/arts, block-cut, flows/matching (Dinic, MCMF, Kuhn, Hopcroft–Karp, Hungarian), trees (LCA, HLD, centroid, Euler tour, reroot via patterns), 2-SAT, Eulerian path, difference constraints
+- **math/** — modint, combinatorics/Lucas, sieve/Möbius, CRT (+extended), BSGS, Tonelli–Shanks, XOR basis, Gaussian elim, FFT/NTT, floor sum, geometry (2D, closest pair, half-planes), factoring
+- **patterns/** — binary/ternary search, two pointers, sliding window, LIS, Mo’s, CHT, DP family (digit/bitmask/SOS/rerooting), coordinate compression, contest I/O
+- **strings/** — KMP, Z, Manacher, hashing, trie, Aho–Corasick, SA/SAM/suffix tree, Lyndon
 
 ## Solved catalog
 
 | Platform | Slug | File |
 | --- | --- | --- |
-| `hacker-cup` | `chainblock-b` | [`solved/hacker-cup/chainblock-b.cpp`](solved/hacker-cup/chainblock-b.cpp) |
-| `hacker-cup` | `consistency-a1` | [`solved/hacker-cup/consistency-a1.cpp`](solved/hacker-cup/consistency-a1.cpp) |
-| `hacker-cup` | `consistency-a2` | [`solved/hacker-cup/consistency-a2.cpp`](solved/hacker-cup/consistency-a2.cpp) |
-| `hacker-cup` | `gold-mine-c1` | [`solved/hacker-cup/gold-mine-c1.cpp`](solved/hacker-cup/gold-mine-c1.cpp) |
-| `hacker-cup` | `qualification-c` | [`solved/hacker-cup/qualification-c.cpp`](solved/hacker-cup/qualification-c.cpp) |
-| `hacker-cup` | `round-2-a` | [`solved/hacker-cup/round-2-a.cpp`](solved/hacker-cup/round-2-a.cpp) |
-| `hacker-cup` | `runway-a` | [`solved/hacker-cup/runway-a.cpp`](solved/hacker-cup/runway-a.cpp) |
-| `hacker-cup` | `traffic-control-b` | [`solved/hacker-cup/traffic-control-b.cpp`](solved/hacker-cup/traffic-control-b.cpp) |
-| `hacker-cup` | `valet-parking-c1` | [`solved/hacker-cup/valet-parking-c1.cpp`](solved/hacker-cup/valet-parking-c1.cpp) |
-| `hacker-cup` | `weak-typing-a1` | [`solved/hacker-cup/weak-typing-a1.cpp`](solved/hacker-cup/weak-typing-a1.cpp) |
-| `hacker-cup` | `weak-typing-a2` | [`solved/hacker-cup/weak-typing-a2.cpp`](solved/hacker-cup/weak-typing-a2.cpp) |
-| `hacker-cup` | `xs-and-os` | [`solved/hacker-cup/xs-and-os.cpp`](solved/hacker-cup/xs-and-os.cpp) |
+| `hacker-cup` | `2017-qualification-fighting-the-zombie` | [`solved/hacker-cup/2017-qualification-fighting-the-zombie.cpp`](solved/hacker-cup/2017-qualification-fighting-the-zombie.cpp) |
+| `hacker-cup` | `2021-qualification-consistency-a1` | [`solved/hacker-cup/2021-qualification-consistency-a1.cpp`](solved/hacker-cup/2021-qualification-consistency-a1.cpp) |
+| `hacker-cup` | `2021-qualification-consistency-a2` | [`solved/hacker-cup/2021-qualification-consistency-a2.cpp`](solved/hacker-cup/2021-qualification-consistency-a2.cpp) |
+| `hacker-cup` | `2021-qualification-gold-mine-c1` | [`solved/hacker-cup/2021-qualification-gold-mine-c1.cpp`](solved/hacker-cup/2021-qualification-gold-mine-c1.cpp) |
+| `hacker-cup` | `2021-qualification-xs-and-os` | [`solved/hacker-cup/2021-qualification-xs-and-os.cpp`](solved/hacker-cup/2021-qualification-xs-and-os.cpp) |
+| `hacker-cup` | `2021-round-1-traffic-control-b` | [`solved/hacker-cup/2021-round-1-traffic-control-b.cpp`](solved/hacker-cup/2021-round-1-traffic-control-b.cpp) |
+| `hacker-cup` | `2021-round-1-weak-typing-a1` | [`solved/hacker-cup/2021-round-1-weak-typing-a1.cpp`](solved/hacker-cup/2021-round-1-weak-typing-a1.cpp) |
+| `hacker-cup` | `2021-round-1-weak-typing-a2` | [`solved/hacker-cup/2021-round-1-weak-typing-a2.cpp`](solved/hacker-cup/2021-round-1-weak-typing-a2.cpp) |
+| `hacker-cup` | `2021-round-2-chainblock-b` | [`solved/hacker-cup/2021-round-2-chainblock-b.cpp`](solved/hacker-cup/2021-round-2-chainblock-b.cpp) |
+| `hacker-cup` | `2021-round-2-runway-a` | [`solved/hacker-cup/2021-round-2-runway-a.cpp`](solved/hacker-cup/2021-round-2-runway-a.cpp) |
+| `hacker-cup` | `2021-round-2-valet-parking-c1` | [`solved/hacker-cup/2021-round-2-valet-parking-c1.cpp`](solved/hacker-cup/2021-round-2-valet-parking-c1.cpp) |
+| `hacker-cup` | `2022-round-2-perfectly-balanced-a1` | [`solved/hacker-cup/2022-round-2-perfectly-balanced-a1.cpp`](solved/hacker-cup/2022-round-2-perfectly-balanced-a1.cpp) |
 | `meta-coding-puzzles` | `abcs` | [`solved/meta-coding-puzzles/abcs.cpp`](solved/meta-coding-puzzles/abcs.cpp) |
 | `meta-coding-puzzles` | `all-wrong` | [`solved/meta-coding-puzzles/all-wrong.cpp`](solved/meta-coding-puzzles/all-wrong.cpp) |
 | `meta-coding-puzzles` | `battleship` | [`solved/meta-coding-puzzles/battleship.cpp`](solved/meta-coding-puzzles/battleship.cpp) |
@@ -50,9 +52,22 @@ C++17 **competitive programming** reference — algorithm templates plus **solve
 
 ## Compile
 
+Every `.cpp` under `coding/` (flags from this README):
+
 ```bash
-g++ -std=c++17 -O2 -Wall reference/graphs/dijkstra.cpp
-g++ -std=c++17 -O2 solved/hacker-cup/consistency-a1.cpp
+# Local / CI (Docker)
+docker build --target coding -t interview-coding -f .github/docker/Dockerfile .
+docker run interview-coding
+
+# Or directly
+./.github/scripts/compile-coding.sh
+```
+
+Single file:
+
+```bash
+g++ -std=c++17 -O2 -Wall reference/graphs/shortest-path.cpp
+g++ -std=c++17 -O2 solved/hacker-cup/2021-qualification-consistency-a1.cpp
 ```
 
 Format: `clang-format -i **/*.cpp`

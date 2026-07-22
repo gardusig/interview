@@ -6,7 +6,7 @@ Loan origination covers **application intake**, **credit underwriting**, **offer
 
 **Primary users:** borrowers (apply, sign), underwriters (manual review), partners (income verification APIs).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **long-running workflow + human-in-the-loop + audit trail**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **long-running workflow + human-in-the-loop + audit trail**.
 
 **Company anchors:** SoFi, LendingClub, Affirm, bank mortgage desks.
 

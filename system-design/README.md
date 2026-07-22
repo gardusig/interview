@@ -1,10 +1,10 @@
 # gardusig/system-design
 
-Public **system design interview** reference — architecture examples, AWS drills, patterns, and prep runbooks.
+Public **system design interview** reference — architecture examples, AWS drills, and topic notes.
 
 **Practice folder** — large-scale architecture, interview examples, AWS drills.
 
-**Hub checkout:** [`public/interview/system-design/`](https://github.com/gardusig/gardusig/tree/main/public/interview/system-design) in [gardusig/gardusig](https://github.com/gardusig/gardusig) · **Interview index:** [`public/interview/`](../) · **Siblings:** [`problem-solving`](../problem-solving/) (coding) · [`professional-experiences`](../professional-experiences/) (behavioral)
+**Hub checkout:** [`system-design/`](https://github.com/gardusig/interview/tree/main/system-design) in [gardusig/interview](https://github.com/gardusig/interview) · **Interview index:** [`../`](../) · **Siblings:** [`coding`](../coding/) · [`behavioral`](../behavioral/)
 
 ## 📇 Index
 
@@ -20,25 +20,25 @@ Public **system design interview** reference — architecture examples, AWS dril
 - **Conversation flow** on this page: clarify before you draw, validate assumptions, iterate.
 - **Topic deep-dives** in [`topics/`](./topics/README.md) (indexed by [`topics-index.md`](./topics-index.md)).
 - **Interview examples** under [`examples/`](./examples/) — product domains (`platform/`, `social/`, `commerce/`, …) and [`examples/aws/`](./examples/aws/) service drills.
-- **Company / app index:** [`high-profit-app-coverage.md`](./prep/high-profit-app-coverage.md).
-- **Patterns and templates** in this folder: [example authoring template](./patterns/example-authoring-template.md), [AWS reference layout](./patterns/aws-reference-layout.md), [event-driven architecture](./patterns/event-driven-architecture.md), [60-minute runbook](./prep/interview-runbook-60m.md).
-- **Study overlays**: [frequency tiers](./prep/topic-priority.md), [system catalog](./prep/system-catalog.md), [archetype matrix](./prep/archetype-coverage-matrix.md), [cloud capability matrix](./prep/cloud-capability-matrix.md).
+- **Company / app index:** [`high-profit-app-coverage.md`](./topics/high-profit-app-coverage.md).
+- **Patterns and templates** in this folder: [example authoring template](./topics/example-authoring-template.md), [AWS reference layout](./topics/aws-reference-layout.md), [event-driven architecture](./topics/event-driven-architecture.md), [60-minute runbook](./topics/interview-runbook-60m.md).
+- **Study overlays**: [frequency tiers](./topics/topic-priority.md), [system catalog](./topics/system-catalog.md), [archetype matrix](./topics/archetype-coverage-matrix.md), [cloud capability matrix](./topics/cloud-capability-matrix.md).
 - **Cross-cloud service names** in [`cloud-services.md`](./topics/cloud-services.md).
-- **Role-level engineering stories** and cross-role behavioral prep: [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) (public).
+- **Role-level engineering stories** and cross-role behavioral prep: [behavioral](../behavioral/README.md).
 
 ## 🧰 Prep runbook
 
 Use this split during system design prep:
 
 - **What exists**: open [`topics-index.md`](./topics-index.md) for APIs, storage, messaging, reliability, and networking building blocks.
-- **What to practice first**: open [`topic-priority.md`](./prep/topic-priority.md) for A/B/C interview topic prioritization.
-- **What systems to build**: open [`system-catalog.md`](./prep/system-catalog.md) for the one-issue-per-system inventory.
-- **Archetype coverage**: open [`archetype-coverage-matrix.md`](./prep/archetype-coverage-matrix.md) to choose drills by product shape.
-- **60-minute cadence**: open [`interview-runbook-60m.md`](./prep/interview-runbook-60m.md) for timeboxed interview flow.
-- **Cloud capability translation**: open [`cloud-capability-matrix.md`](./prep/cloud-capability-matrix.md) (comfort scores) and [`cloud-services.md`](./topics/cloud-services.md) (provider matrix).
+- **What to practice first**: open [`topic-priority.md`](./topics/topic-priority.md) for A/B/C interview topic prioritization.
+- **What systems to build**: open [`system-catalog.md`](./topics/system-catalog.md) for the one-issue-per-system inventory.
+- **Archetype coverage**: open [`archetype-coverage-matrix.md`](./topics/archetype-coverage-matrix.md) to choose drills by product shape.
+- **60-minute cadence**: open [`interview-runbook-60m.md`](./topics/interview-runbook-60m.md) for timeboxed interview flow.
+- **Cloud capability translation**: open [`cloud-capability-matrix.md`](./topics/cloud-capability-matrix.md) (comfort scores) and [`cloud-services.md`](./topics/cloud-services.md) (provider matrix).
 - **Round simulation**: open [`examples/README.md`](./examples/README.md) and run one **product** example as a full interview round.
-- **Reusable patterns**: [AWS reference layout](./patterns/aws-reference-layout.md), [event-driven architecture](./patterns/event-driven-architecture.md).
-- **Authoring or reviewing an example**: [`example-authoring-template.md`](./patterns/example-authoring-template.md) (v3 contract for files under `examples/`); diagram palette: [`architecture-diagram-conventions.md`](./patterns/architecture-diagram-conventions.md).
+- **Reusable patterns**: [AWS reference layout](./topics/aws-reference-layout.md), [event-driven architecture](./topics/event-driven-architecture.md).
+- **Authoring or reviewing an example**: [`example-authoring-template.md`](./topics/example-authoring-template.md) (v3 contract for files under `examples/`); diagram palette: [`architecture-diagram-conventions.md`](./topics/architecture-diagram-conventions.md).
 - **Pull request CI** — external Docker pipelines (not in this repo)
 - **Release** — résumé PDF artifact via external CI
 
@@ -51,12 +51,10 @@ flowchart TB
  classDef read2 fill:#64b5f6,color:#111
  hub["Architecture hub"]
  hub --> topics["topics/"]
- hub --> prep["prep/"]
- hub --> patterns["patterns/"]
  hub --> ex["examples/ by domain"]
  hub --> flow["Interviewer flow below"]
  class hub neutralM
- class topics,prep,patterns,ex read1
+ class topics,ex read1
  class flow read2
 ```
 
@@ -64,15 +62,15 @@ flowchart TB
 
 | If I need… | Open |
 | --- | --- |
-| Behavioral stories and role files | [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) |
+| Behavioral stories and role files | [behavioral](../behavioral/README.md) |
 | Topic notes (APIs, stores, caching, messaging, …) | [`topics-index.md`](./topics-index.md) |
-| Architecture prep priorities (A/B/C) | [`topic-priority.md`](./prep/topic-priority.md) |
-| Cloud capability confidence matrix | [`cloud-capability-matrix.md`](./prep/cloud-capability-matrix.md) |
-| System / example inventory | [`system-catalog.md`](./prep/system-catalog.md) |
+| Architecture prep priorities (A/B/C) | [`topic-priority.md`](./topics/topic-priority.md) |
+| Cloud capability confidence matrix | [`cloud-capability-matrix.md`](./topics/cloud-capability-matrix.md) |
+| System / example inventory | [`system-catalog.md`](./topics/system-catalog.md) |
 | Interview examples (product systems) | [`examples/README.md`](./examples/README.md) |
-| AWS topology pattern, multi-cloud tables | [`aws-reference-layout.md`](./patterns/aws-reference-layout.md) |
-| Event-driven pattern (outbox, contracts) | [`event-driven-architecture.md`](./patterns/event-driven-architecture.md) |
-| Example authoring template | [`example-authoring-template.md`](./patterns/example-authoring-template.md) |
+| AWS topology pattern, multi-cloud tables | [`aws-reference-layout.md`](./topics/aws-reference-layout.md) |
+| Event-driven pattern (outbox, contracts) | [`event-driven-architecture.md`](./topics/event-driven-architecture.md) |
+| Example authoring template | [`example-authoring-template.md`](./topics/example-authoring-template.md) |
 | AWS / GCP / Azure service name matrix | [`cloud-services.md`](./topics/cloud-services.md) |
 | This page’s interview flow | [Interaction flow below](#-interaction-flow-with-the-interviewer) |
 
@@ -81,12 +79,10 @@ flowchart TB
 | Path | Contents |
 | --- | --- |
 | *This directory* | Hub + [`topics-index.md`](./topics-index.md) |
-| [`topics/`](./topics/README.md) | API, stores, caching, messaging, compute, edge, observability, reliability, security |
-| [`prep/`](./prep/README.md) | [Catalog](./prep/system-catalog.md), [runbook](./prep/interview-runbook-60m.md), [frequency tiers](./prep/topic-priority.md), [archetype matrix](./prep/archetype-coverage-matrix.md), [cloud capability matrix](./prep/cloud-capability-matrix.md) |
-| [`patterns/`](./patterns/README.md) | [Authoring template](./patterns/example-authoring-template.md), [AWS layout](./patterns/aws-reference-layout.md), [EDA reference](./patterns/event-driven-architecture.md) |
+| [`topics/`](./topics/README.md) | Building blocks, AWS/EDA patterns, runbook, catalog, authoring templates |
 | [`examples/`](./examples/README.md) | Product rounds by domain + [`examples/aws/`](./examples/aws/README.md) service drills |
-| [`prep/high-profit-app-coverage.md`](./prep/high-profit-app-coverage.md) | Company / app → example routing (Meta, Uber, Amazon, …) |
-| [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md) | Per-role stories and behavioral interview hub |
+| [`topics/high-profit-app-coverage.md`](./topics/high-profit-app-coverage.md) | Company / app → example routing (Meta, Uber, Amazon, …) |
+| [behavioral](../behavioral/README.md) | Per-role stories and behavioral interview hub |
 
 ## 🎤 Interaction flow with the interviewer
 
@@ -153,5 +149,5 @@ For topic-level depth after the conversation is structured, use the [topics inde
 
 ## 🔗 Related
 
-- Behavioral interview prep (stories + domains): [professional-experiences](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md)
-- [Interview prep hub](https://github.com/gardusig/gardusig/tree/main/public/interview/professional-experiences/README.md)
+- Behavioral interview prep (stories + domains): [behavioral](../behavioral/README.md)
+- [Behavioral hub](../behavioral/README.md)

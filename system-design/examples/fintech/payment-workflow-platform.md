@@ -6,7 +6,7 @@ A payment workflow platform orchestrates **authorize → capture → settle → 
 
 **Primary users:** checkout services (initiate/capture/refund), finance (settlement reports), operators (reconciliation dashboards, manual review queue), compliance (immutable audit trail).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **payment state machine + reconciliation**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **payment state machine + reconciliation**.
 
 Distinct from [core banking ledger](./core-banking-ledger.md): this doc is **payment orchestration + PSP integration**, not full account/ledger domain modeling.
 
@@ -500,4 +500,4 @@ PSPs do not participate in distributed transactions. Use **orchestrated saga**: 
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
 - [Core banking ledger](./core-banking-ledger.md)
 - [Event ticketing](../commerce/event-ticketing.md) (commerce + payment saga)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

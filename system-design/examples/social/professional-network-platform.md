@@ -6,7 +6,7 @@ A professional network (LinkedIn-shaped) combines a **connection graph**, **feed
 
 **Primary users:** members (post, connect), recruiters (search, InMail), ads (sponsored jobs).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **2nd/3rd-degree feed candidate generation + connection graph**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **2nd/3rd-degree feed candidate generation + connection graph**.
 
 **Company anchors:** LinkedIn, Xing, Handshake.
 

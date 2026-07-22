@@ -6,7 +6,7 @@ This design combines an **internal authoritative ledger** for day-to-day settlem
 
 **Primary users:** business services (settlements), compliance/auditors (verify anchors), settlement ops (confirmation windows), platform SRE (anchor queue, chain fees).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **trust boundaries + anchoring strategy**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **trust boundaries + anchoring strategy**.
 
 Ledger truth: [core banking ledger](./core-banking-ledger.md). Immutable audit logs: [cross-service audit logging](../platform/cross-service-audit-logging.md). Payment rails: [payment workflow platform](./payment-workflow-platform.md).
 
@@ -515,5 +515,5 @@ Hybrid: anchor root to permissioned; **optional** mirror hash to public chain we
 - [Core banking ledger](./core-banking-ledger.md)
 - [Cross-service audit logging](../platform/cross-service-audit-logging.md)
 - [Payment workflow platform](./payment-workflow-platform.md)
-- [Event-driven architecture](../../patterns/event-driven-architecture.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [Event-driven architecture](../../topics/event-driven-architecture.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

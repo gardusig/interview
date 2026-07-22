@@ -6,7 +6,7 @@ A notification platform delivers **multi-channel messages** (email, push, SMS, i
 
 **Primary users:** product services (send notifications), end users (preference center), operators (DLQ replay, provider health dashboards), compliance (suppression lists, audit).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **fanout + preference + provider backoff**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **fanout + preference + provider backoff**.
 
 Order pipeline consumers often emit events handled here — see [event-driven order pipeline](../event-driven/event-driven-order-pipeline.md).
 
@@ -546,4 +546,4 @@ Document **timezone** on user profile; never use server UTC blindly.
 - [Rate limiter](./rate-limiter.md)
 - [Distributed job scheduler](./distributed-job-scheduler.md)
 - [Cross-service audit logging](./cross-service-audit-logging.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)
