@@ -6,9 +6,9 @@ An event-driven order pipeline accepts **order placement** synchronously, then c
 
 **Primary users:** shoppers (place order, track status), internal domain services (payment, inventory, notification), operators (replay DLQ, inspect stuck orders).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **outbox + idempotency + replay**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **outbox + idempotency + replay**.
 
-For reusable event-driven patterns (contracts, versioning, choreography vs orchestration), see [event-driven architecture reference](../../patterns/event-driven-architecture.md).
+For reusable event-driven patterns (contracts, versioning, choreography vs orchestration), see [event-driven architecture reference](../../topics/event-driven-architecture.md).
 
 ## Requirements discovery (interview theater)
 
@@ -519,7 +519,7 @@ This design is **choreography**: each consumer reacts to events without a centra
 ## Related
 
 - [Examples hub](./README.md)
-- [Event-driven architecture reference](../../patterns/event-driven-architecture.md)
+- [Event-driven architecture reference](../../topics/event-driven-architecture.md)
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md) (scheduled work vs continuous events)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md) (payment domain detail)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

@@ -6,7 +6,7 @@ Cross-service audit logging collects **normalized, immutable events** from many 
 
 **Primary users:** application services (emitters), security/compliance investigators (query), platform SRE (projection lag, retention), auditors (export bundles).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **immutable event log + query projection**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **immutable event log + query projection**.
 
 Application logs ≠ audit log: audit events are **business-meaningful actions** with actor/target, not debug traces. Overlaps [blockchain settlement and audit](../fintech/blockchain-settlement-audit.md) when interviewer asks for external anchoring — optional extension.
 
@@ -521,4 +521,4 @@ Indexes (projection)
 - [Notification platform](./notification-platform.md)
 - [Blockchain settlement and audit](../fintech/blockchain-settlement-audit.md)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

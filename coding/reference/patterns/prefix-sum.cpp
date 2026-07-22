@@ -2,6 +2,7 @@
 // When: static ranges, many queries; offline range updates then final values.
 // Time: build O(n), range sum O(1)    Space: O(n)
 #include <cassert>
+#include <cstddef>
 #include <vector>
 
 using std::vector;

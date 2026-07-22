@@ -2,126 +2,87 @@
 
 ## 📇 Index
 
-1. [1. API design](#1-api-design)
+1. [Protocol choice](#protocol-choice)
+2. [Resource design](#resource-design)
+3. [Idempotency](#idempotency)
+4. [Versioning](#versioning)
+5. [Pagination](#pagination)
+6. [Errors and contracts](#errors-and-contracts)
+7. [Auth, rate limits, and backpressure](#auth-rate-limits-and-backpressure)
+8. [Sync vs async APIs](#sync-vs-async-apis)
 
-Public **REST** shape, **gRPC** for internal RPC, and **HTTP** ergonomics (errors, pagination, idempotency). For ingress patterns (API Gateway, throttling), see [edge-and-ingress.md](./edge-and-ingress.md). For internal load balancing of gRPC, see [compute.md](./compute.md).
+Public **REST**, internal **gRPC**, HTTP ergonomics. Ingress: [edge-and-ingress.md](./edge-and-ingress.md). Load balancing: [compute.md](./compute.md).
 
-## 1. API Design
+## Protocol choice
 
-### REST vs gRPC vs WebSocket
+| | REST/JSON | gRPC | WebSocket / SSE |
+| --- | --- | --- | --- |
+| Best for | Public/partner HTTP | Service-to-service | Real-time push |
+| Contract | OpenAPI | Protobuf | App-level |
+| Browser | Natural | Limited | Native WS / EventSource |
+| Debug | curl-friendly | Harder | Sessionful |
 
-* **REST**
- * Human-readable, easy debugging (curl, browser)
- * Works naturally over HTTP
- * Flexible but weaker contracts
- * Enforced via documentation / OpenAPI, not at the protocol level
-* **gRPC**
- * Strong contracts via protobuf
- * Lower latency, smaller payloads
- * Built-in streaming
- * Harder to debug, limited native browser support
-* **WebSockets**
- * Persistent, bidirectional connection
- * Server can push updates (no polling)
- * Low latency for real-time data
- * Harder to scale (stateful connections)
+**Rule:** REST outside; gRPC inside; WS/SSE when the server must push.
 
-**Rule of thumb**:
-- REST → public/external request–response APIs
-- gRPC → internal service-to-service communication
-- WebSockets → real-time client updates
+**AWS:** API Gateway or ALB for public REST; ALB/NLB for internal gRPC.
 
-On **AWS**, public REST often sits behind **Amazon API Gateway** or an **Application Load Balancer**; internal gRPC is commonly fronted by an **Application Load Balancer** (gRPC support) or **Network Load Balancer** for high-throughput L4 forwarding.
+## Resource design
 
----
+* Nouns in paths: `/trips/{tripId}`, not `/createTrip`.
+* Path params = identity; query = filter/sort/page; headers = auth/trace/idempotency.
+* Prefer coarse resources over chatty N+1 endpoints; offer **batch** or **expand** when needed.
+* **HATEOAS** rarely required in interviews—clarity > purity.
 
-### Idempotency
+## Idempotency
 
-* An operation is **idempotent** if repeating it produces the same result.
-* Required for safe retries under failures.
+Safe retries need idempotent writes.
 
-**Examples**:
+* `PUT`/`DELETE` often naturally idempotent; `POST` needs **Idempotency-Key** (or client-generated UUID resource id).
+* Store key → response for TTL window; same key + same body ⇒ same result; conflict on mismatch.
 
-* `PUT /trips/{id}` → idempotent
-* `POST /trips` → not idempotent by default
+## Versioning
 
----
+* **URI** `/v1/...` — explicit, cacheable, easy to route.
+* **Header** `Accept-Version` — clean URLs, harder to debug.
+* Prefer **additive** changes; breaking changes ⇒ new version + sunset policy.
 
-### Versioning Strategies
+## Pagination
 
-* **URI-based**: `/v1/trips`
-* **Header-based**: `Accept-Version: v1`
+* **Offset** — simple; slow/inconsistent under inserts at high offsets.
+* **Cursor** — stable for feeds; needs sort key (id/time).
 
-**Tradeoff**:
+Prefer cursors for large or frequently updated lists: `?after=trip_123&limit=20`.
 
-* URI-based is explicit and easy
-* Header-based keeps URLs clean but harder to debug
+## Errors and contracts
 
----
+Use precise status codes:
 
-### Pagination
+* `400` validation · `401` auth · `403` forbidden · `404` missing · `409` conflict · `429` rate limit · `5xx` server
 
-Pagination is used to return large datasets in smaller, manageable chunks while maintaining performance and correctness.
+Return a **stable error body** (`code`, `message`, `request_id`). Publish **OpenAPI** / protobuf as the contract; contract tests in CI.
 
-* **Offset-based pagination**: `?offset=100&limit=20`
- * Uses row offsets to skip records
- * Easy to implement and understand
- * Performance degrades for large offsets (DB must scan/skips rows)
- * Results become inconsistent when rows are inserted or deleted
+## Auth, rate limits, and backpressure
 
- **Example issue**:
- - Page 1 returns items 1–20
- - A new item is inserted at the top
- - Page 2 now skips or duplicates items
+* **AuthN/Z** — OAuth2/OIDC, mTLS internal, signed webhooks for partners.
+* **Rate limits** — per API key / user / IP; return `429` + `Retry-After`.
+* **Timeouts** — every outbound call; never hang the request thread.
+* **Bulkheads** — isolate pools so one dependency cannot exhaust the service.
 
-* **Cursor-based pagination**: `?cursor=abc123`
- * Uses a stable cursor (e.g. last seen ID or timestamp)
- * Maintains consistent ordering across pages
- * Efficient for large datasets
- * Requires a well-defined sort key (ID, timestamp)
+See [reliability.md](./reliability.md) and [edge-and-ingress.md](./edge-and-ingress.md).
 
- **Example**:
- - `GET /trips?after=trip_123&limit=20`
- - Returns trips created after `trip_123`
+## Sync vs async APIs
 
-**Preferred for production**: Cursor-based pagination, especially for high-traffic or frequently updated datasets.
+* **Sync** — client needs the result now (read, small write).
+* **Accepted async** — `202` + `Location` job URL, or return id and process via queue ([messaging-async.md](./messaging-async.md)).
+* **Webhooks** — partner callbacks; verify signatures; idempotent handlers.
 
----
-
-### HTTP Error Handling
-
-* Use meaningful HTTP status codes to clearly communicate failure types
-
- * `400` Bad Request — invalid or malformed input
- * `401` Unauthorized — missing or invalid authentication token
- * `403` Forbidden — authenticated but not allowed to perform the operation
- * `404` Not Found — resource does not exist
- * `409` Conflict — request conflicts with current state
- * `500` Internal Server Error — unexpected server failure
-
----
-
-### HTTP Parameters
-
-* **Path params** → resource identity
- * `/trips/{tripId}`
-* **Query params** → filtering, sorting, pagination
- * `?status=active&limit=20`
-* **Headers** → metadata
- * Auth tokens
- * Trace IDs
- * Idempotency keys
-
----
-
-### External and partner HTTP APIs
-
-Treat third-party **External HTTP API** dependencies like any other risky downstream: timeouts, retries with backoff, idempotency where possible, and explicit failure modes (see [reliability.md](./reliability.md)). In interviews, name **real** integration patterns (webhooks, OAuth2 client credentials, signed callbacks) rather than fictional services.
+External HTTP: treat as unreliable dependency (timeouts, retries, circuit breaker).
 
 ## 🔗 Related
 
 - [Topics index](../topics-index.md)
 - [Edge and ingress](./edge-and-ingress.md)
+- [Frontend strategies](./frontend-strategies.md)
 - [Compute](./compute.md)
 - [Reliability](./reliability.md)
-- [AWS reference layout]./aws-reference-layout.md
+- [AWS reference layout](./aws-reference-layout.md)

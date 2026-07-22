@@ -6,9 +6,9 @@ A workflow orchestration engine runs **durable state machines**: each execution 
 
 **Primary users:** product engineers (workflow definitions), task workers (activity implementations), operators (stuck executions, replay), compliance (audit history).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **durable state transitions + retries**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **durable state transitions + retries**.
 
-Compare managed: [AWS reference layout](../../patterns/aws-reference-layout.md) (Step Functions box). Task leasing parallels [distributed job scheduler](../platform/distributed-job-scheduler.md). Business sagas: [payment workflow platform](../fintech/payment-workflow-platform.md).
+Compare managed: [AWS reference layout](../../topics/aws-reference-layout.md) (Step Functions box). Task leasing parallels [distributed job scheduler](../platform/distributed-job-scheduler.md). Business sagas: [payment workflow platform](../fintech/payment-workflow-platform.md).
 
 ## Requirements discovery (interview theater)
 
@@ -528,9 +528,9 @@ Definition includes `Catch` → `CompensatePayment` → `ReleaseInventory` on te
 ## Related
 
 - [Examples hub](./README.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md)
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md)
 - [Messaging and async ](../../topics/messaging-async.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

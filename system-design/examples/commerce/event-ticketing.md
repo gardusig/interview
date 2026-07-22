@@ -6,7 +6,7 @@ An event ticketing system sells **limited inventory** (GA quantity or assigned s
 
 **Primary users:** fans (purchase flow), event operators (inventory caps, on-sale timing), finance (reconciliation), SRE (bot traffic, hot-key incidents).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **hot inventory + reservation saga**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **hot inventory + reservation saga**.
 
 Payment orchestration detail: [payment workflow platform](../fintech/payment-workflow-platform.md). Regional pool variant: [multi-region inventory reservation](./multi-region-inventory-reservation.md). Edge throttling: [API gateway rate limiting](../platform/api-gateway-rate-limiting.md).
 
@@ -540,4 +540,4 @@ Interview: single `available=80000` row dies at 2k/s — **must shard or queue**
 - [Shopping cart checkout](./shopping-cart-checkout.md)
 - [API gateway rate limiting](../platform/api-gateway-rate-limiting.md)
 - [Concurrency ](../../topics/concurrency.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

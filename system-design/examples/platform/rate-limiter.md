@@ -6,7 +6,7 @@ A distributed rate limiter enforces per-key request budgets on a **synchronous h
 
 **Primary users:** service owners (policy configuration), API clients (transparent allow vs throttle), operators (SLO dashboards, emergency bypass).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **distributed counters + consistency**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **distributed counters + consistency**.
 
 Often asked as a **standalone service** or as **middleware** in front of other systems; this doc centers the limiter primitive (check API + counter store). Gateway auth and routing live in [api-gateway-rate-limiting](./api-gateway-rate-limiting.md).
 
@@ -553,4 +553,4 @@ Indexes:
 - [API gateway rate limiting](./api-gateway-rate-limiting.md) (consumer of limiter primitive)
 - [HTTP error handling](../../topics/api-design.md)
 - [Caching](../../topics/caching.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

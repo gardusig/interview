@@ -2,6 +2,7 @@
 // When: reconstruct integer from modular residues; Garner / CRT merge.
 // Time: O(k log M)    Space: O(k)
 #include <cassert>
+#include <cstddef>
 #include <tuple>
 #include <vector>
 

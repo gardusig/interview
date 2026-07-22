@@ -74,6 +74,6 @@ flowchart TB
 ## Related
 
 - [AWS service drills index](./README.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Topics index](../../topics-index.md)
-- [Cloud capability matrix](../../prep/cloud-capability-matrix.md)
+- [Cloud capability matrix](../../topics/cloud-capability-matrix.md)

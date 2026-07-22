@@ -6,7 +6,7 @@ A shopping cart service holds **mutable basket state** (SKUs, quantities, price 
 
 **Primary users:** shoppers (guest and logged-in), checkout web/mobile apps, order service (downstream), operators (cart abandonment metrics, merge failure rates).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **concurrency + merge + checkout validation**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **concurrency + merge + checkout validation**.
 
 Hot inventory reservation at checkout overlaps with [event ticketing](./event-ticketing.md); order placement after validation is covered in [event-driven order pipeline](../event-driven/event-driven-order-pipeline.md).
 
@@ -550,4 +550,4 @@ Indexes:
 - [Multi-region inventory reservation](./multi-region-inventory-reservation.md)
 - [Payment workflow platform](../fintech/payment-workflow-platform.md)
 - [Concurrency ](../../topics/concurrency.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

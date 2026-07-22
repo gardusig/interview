@@ -6,7 +6,7 @@ Subscription billing manages **plans**, **renewals**, **proration**, **dunning**
 
 **Primary users:** subscribers (upgrade/cancel), finance (MRR reports), support (credits/refunds).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **renewal state machine + idempotent webhooks**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **renewal state machine + idempotent webhooks**.
 
 Complements [payment workflow](./payment-workflow-platform.md) (one-shot capture) — here **time-based billing cycles** dominate.
 

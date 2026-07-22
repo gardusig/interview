@@ -6,7 +6,7 @@ A distributed job scheduler runs **recurring (cron-like)** and **one-off** backg
 
 **Primary users:** service teams (register jobs), operators (pause, inspect runs, replay failures), platform SRE (queue lag, duplicate-run alerts).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **lease model + duplicate suppression**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **lease model + duplicate suppression**.
 
 Distinct from [stream processing platform](../event-driven/stream-processing-platform.md) (continuous partitioned streams) and from [notification platform](./notification-platform.md) (fanout deliveries).
 
@@ -562,4 +562,4 @@ If zero rows updated → another worker owns lease → back off.
 - [Stream processing platform](../event-driven/stream-processing-platform.md)
 - [Notification platform](./notification-platform.md)
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

@@ -6,9 +6,9 @@ A stream processing platform lets teams deploy **continuous pipelines** over par
 
 **Primary users:** data/engineering teams (author pipelines), operators (lag, checkpoints, replay), downstream consumers (materialized views, derived topics).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **windowed state + replay + backpressure**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **windowed state + replay + backpressure**.
 
-Distinct from [event-driven order pipeline](./event-driven-order-pipeline.md) (business saga example) and [distributed job scheduler](../platform/distributed-job-scheduler.md) (discrete scheduled runs). **Pattern reference:** [event-driven architecture](../../patterns/event-driven-architecture.md).
+Distinct from [event-driven order pipeline](./event-driven-order-pipeline.md) (business saga example) and [distributed job scheduler](../platform/distributed-job-scheduler.md) (discrete scheduled runs). **Pattern reference:** [event-driven architecture](../../topics/event-driven-architecture.md).
 
 ## Requirements discovery (interview theater)
 
@@ -520,9 +520,9 @@ Response `202 Accepted`:
 ## Related
 
 - [Examples hub](./README.md)
-- [Event-driven architecture](../../patterns/event-driven-architecture.md)
+- [Event-driven architecture](../../topics/event-driven-architecture.md)
 - [Event-driven order pipeline](./event-driven-order-pipeline.md)
 - [Sequential replica digestion](../platform/sequential-replica-digestion.md)
 - [Distributed job scheduler](../platform/distributed-job-scheduler.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

@@ -1,6 +1,6 @@
 # Famous apps → examples
 
-**Parent:** [`README.md`](./README.md) · **Full company tables:** [`../prep/high-profit-app-coverage.md`](../prep/high-profit-app-coverage.md)
+**Parent:** [`README.md`](./README.md) · **Full company tables:** [`../topics/high-profit-app-coverage.md`](../topics/high-profit-app-coverage.md)
 
 Quick routing for “design {famous app}”. **Primary** = start here; **Also** = second tab in the interview.
 
@@ -56,5 +56,5 @@ Use these for a full 60-minute mock when the routing doc above is too short:
 ## Related
 
 - [Examples README](./README.md)
-- [High-profit app coverage](../prep/high-profit-app-coverage.md)
-- [Archetype matrix](../prep/archetype-coverage-matrix.md)
+- [High-profit app coverage](../topics/high-profit-app-coverage.md)
+- [Archetype matrix](../topics/archetype-coverage-matrix.md)

@@ -6,7 +6,7 @@ An API gateway is the **single north-south entry** for client traffic: TLS termi
 
 **Primary users:** API clients (API keys/OAuth), tenant admins (quotas per route), platform operators (429 dashboards, emergency bypass), upstream microservices (trust gateway identity headers).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **auth chain + distributed throttling**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **auth chain + distributed throttling**.
 
 Counter algorithms, Redis atomicity, and multi-region counter tradeoffs are detailed in [rate limiter](./rate-limiter.md) (standalone primitive). This doc focuses on **gateway composition**.
 
@@ -531,4 +531,4 @@ Indexes:
 - [Feature flag platform](./feature-flag-platform.md)
 - [Cross-service audit logging](./cross-service-audit-logging.md)
 - [HTTP error handling / API design](../../topics/api-design.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

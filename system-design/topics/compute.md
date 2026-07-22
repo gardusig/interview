@@ -47,10 +47,16 @@ Pair with [api-design.md](./api-design.md) for protobuf contracts and [security-
 
 **Amazon MSK** and **Amazon Kinesis** consumers are often **ECS tasks**, **EKS pods**, or **Lambda** (with event source mapping constraints). Same **idempotency** and **scaling** concerns as HTTP workers (see [messaging-async.md](./messaging-async.md)).
 
+## How compute gets to prod
+
+Packaging, rollouts (rolling / blue-green / canary), and rollback belong in [deployment.md](./deployment.md). Alarms that scale or self-heal belong in [oncall-operations.md](./oncall-operations.md).
+
 ## 🔗 Related
 
 - [Topics index](../topics-index.md)
+- [Deployment](./deployment.md)
 - [Edge and ingress](./edge-and-ingress.md)
 - [API design](./api-design.md)
 - [Messaging and async](./messaging-async.md)
-- [AWS reference layout]./aws-reference-layout.md
+- [On-call operations](./oncall-operations.md)
+- [AWS reference layout](./aws-reference-layout.md)

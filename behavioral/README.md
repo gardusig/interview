@@ -1,10 +1,16 @@
 # Behavioral
 
-STAR banks, domain families, per-role behavioral stories, and rehearsal guides.
+STAR-ready work stories plus a **reference** for how to prepare and rehearse behavioral interviews.
 
 ## Structure
 
-- [`domains/`](domains/) — behavioral domain banks (adaptability, conflict, ownership, etc.)
-- [`prep/`](prep/) — prep strategies, frequency tiers, story matrices
-- [`work-experience/`](work-experience/) — dated work history entries
-- [`rehearsal.md`](rehearsal.md) — rehearsal and coaching guide
+| Path | Role |
+| --- | --- |
+| [`reference/`](reference/README.md) | Prep guidance, STAR/rehearsal, domain banks, question matrices |
+| [`work-experience/`](work-experience/README.md) | Dated role files — **source of truth** for facts and impact |
+
+## Start here
+
+1. Open [`reference/README.md`](reference/README.md) for the prep sequence.
+2. Pull stories from [`work-experience/`](work-experience/README.md).
+3. Drill with [`reference/rehearsal.md`](reference/rehearsal.md) and [`reference/prep/question-batches.md`](reference/prep/question-batches.md).

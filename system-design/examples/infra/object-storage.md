@@ -6,9 +6,9 @@ An object storage system stores **immutable blobs** addressed by **`bucket` + `k
 
 **Primary users:** application services (SDK/HTTP), operators (capacity, rebalance), compliance (versioning, legal hold), CDN origins (pre-signed URLs).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **metadata/chunk durability model**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **metadata/chunk durability model**.
 
-Provider mapping row: [cloud services by provider](../../topics/cloud-services.md). Pattern cousin: [AWS reference layout](../../patterns/aws-reference-layout.md) (S3 boxes).
+Provider mapping row: [cloud services by provider](../../topics/cloud-services.md). Pattern cousin: [AWS reference layout](../../topics/aws-reference-layout.md) (S3 boxes).
 
 ## Requirements discovery (interview theater)
 
@@ -496,8 +496,8 @@ Interview anti-pattern: storing entire object inline in metadata DB.
 ## Related
 
 - [Examples hub](./README.md)
-- [AWS reference layout](../../patterns/aws-reference-layout.md)
+- [AWS reference layout](../../topics/aws-reference-layout.md)
 - [Video on demand platform](../media/video-on-demand-platform.md)
 - [Cloud services ](../../topics/cloud-services.md)
 - [Data stores ](../../topics/data-stores.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

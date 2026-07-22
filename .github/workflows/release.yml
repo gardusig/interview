@@ -5,21 +5,26 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: docker build --target resume -t interview-resume -f .github/docker/Dockerfile .
+      - run: docker run --name resume-build interview-resume
+      - run: docker cp resume-build:/workspace/resume/. resume/
+      - run: docker rm resume-build
 
-      - uses: xu-cheng/texlive-action@v2
+      - uses: actions/upload-artifact@v4
         with:
-          scheme: full
-          run: |
-            for f in resume/versions/*.tex; do
-              latexmk -pdf "$f"
-            done
+          name: resumes
+          path: resume/*.pdf
+          if-no-files-found: error
 
       - uses: softprops/action-gh-release@v2
         with:
-          files: resume/versions/*.pdf
+          files: resume/*.pdf
           generate_release_notes: true

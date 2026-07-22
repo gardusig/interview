@@ -7,26 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: docker build --target lint -t interview-lint -f .github/docker/Dockerfile .
+      - run: docker run interview-lint
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+  resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target resume -t interview-resume -f .github/docker/Dockerfile .
+      - run: docker run interview-resume
 
-      - name: Install linters
-        run: npm install -g markdownlint-cli lychee
-
-      - name: Lint markdown
-        run: markdownlint '**/*.md' --ignore node_modules
-
-      - name: Check links
-        run: lychee '**/*.md' --exclude 'https://linkedin.com'
-
-      - name: Validate LaTeX resumes
-        uses: xu-cheng/texlive-action@v2
-        with:
-          scheme: medium
-          run: |
-            for f in resume/versions/*.tex; do
-              echo "Checking $f..."
-              latexmk -pdf -silent "$f"
-            done
+  coding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target coding -t interview-coding -f .github/docker/Dockerfile .
+      - run: docker run interview-coding

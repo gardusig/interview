@@ -1,0 +1,9 @@
+.git
+*.pdf
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+node_modules/

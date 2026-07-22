@@ -6,7 +6,7 @@ A core banking ledger is the **system of record** for customer accounts: **doubl
 
 **Primary users:** account holders (balance, history, transfers), finance (GL reconciliation), compliance (immutable audit), operators (posting failures, exception queue).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **ledger invariants + reconciliation**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **ledger invariants + reconciliation**.
 
 ## Requirements discovery (interview theater)
 
@@ -514,4 +514,4 @@ Payment settlement **posts** to ledger via controlled integration (credit settle
 - [Blockchain settlement and audit](./blockchain-settlement-audit.md)
 - [Cross-service audit logging](../platform/cross-service-audit-logging.md)
 - [Event-driven order pipeline](../event-driven/event-driven-order-pipeline.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

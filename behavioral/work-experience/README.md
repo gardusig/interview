@@ -1,7 +1,7 @@
-# Work experience (migrated)
+# Work experience
 
-This folder contains per-role engineering recaps and interview case-studies migrated from the personal notes repository. Each file is an engineering-focused writeup suitable for architecture notes and interview prep.
+Per-role engineering recaps and interview case studies. Each file is the **source of truth** for facts, systems, and impact numbers used in behavioral answers.
 
-Files moved here mirror the originals; canonical résumé source lives in gardusig/tex.
+Prep method, domains, and rehearsal live in [`../reference/`](../reference/README.md).
 
-See `../README.md` for index and navigation.
+See [`../README.md`](../README.md) for the behavioral hub.

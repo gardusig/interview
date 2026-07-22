@@ -1,11 +1,21 @@
 # Resume
 
-LaTeX source files for different resume versions. Each targets a specific role or company.
+LaTeX sources for different resume variants (role / company). Files live directly under this folder (`general.tex`, …).
 
-Compile with `latexmk -pdf`:
+Compile locally:
 
 ```bash
-latexmk -pdf resume/versions/general.tex
+docker build --target resume -t interview-resume -f .github/docker/Dockerfile .
+docker run interview-resume
 ```
 
-On release, all `.tex` files are compiled and attached as PDF artifacts.
+Or:
+
+```bash
+latexmk -pdf resume/general.tex
+```
+
+## CI
+
+- **PR:** builds `.github/docker/Dockerfile` stage `resume` and compiles all `resume/*.tex`.
+- **Release** (`v*` tags): copies PDFs out of the container, uploads the `resumes` artifact, and attaches them to the GitHub release.

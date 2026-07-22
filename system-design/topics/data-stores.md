@@ -2,168 +2,106 @@
 
 ## 📇 Index
 
-1. [2. SQL vs NoSQL tradeoffs](#2-sql-vs-nosql-tradeoffs)
+1. [Interview comparison matrix](#interview-comparison-matrix)
+2. [SQL databases](#sql-databases)
+3. [NoSQL / key-value / document](#nosql--key-value--document)
+4. [Wide-column and logs](#wide-column-and-logs)
+5. [Indexes and access patterns](#indexes-and-access-patterns)
+6. [Search and derived indexes](#search-and-derived-indexes)
+7. [Multi-store patterns](#multi-store-patterns)
 
-SQL vs NoSQL tradeoffs and index design. Maps to **Amazon DynamoDB** (NoSQL access patterns) and **Amazon RDS** / **Amazon Aurora** (relational) on AWS.
+Pick the store from **access patterns + consistency needs**, not brand familiarity. Maps to **Amazon DynamoDB**, **Amazon RDS** / **Amazon Aurora**, **Amazon ElastiCache**, **Amazon OpenSearch Service**, **Amazon S3**.
 
-## 2. SQL vs NoSQL Tradeoffs
+## Interview comparison matrix
 
-### SQL Databases
+| Need | Prefer | Avoid / push back |
+| --- | --- | --- |
+| Money, inventory reservations, multi-row invariants | SQL (**Aurora/Postgres**) + transactions | Single-item DynamoDB without careful design |
+| Known key lookups at huge QPS | **DynamoDB** / key-value | Ad-hoc SQL joins on hot path |
+| Flexible filters, reporting, admin UIs | SQL + indexes (or warehouse) | Forcing DynamoDB GSIs for every report |
+| Full-text / faceted search | **OpenSearch** (derived) | OLTP `LIKE '%foo%'` at scale |
+| Ephemeral hot state, rate limits, sessions | **Redis** (cache / data structure store) | Durable source of truth in Redis alone |
+| Huge blobs / immutable objects | **S3** + metadata in DB | Huge binary columns in OLTP |
+| Time-ordered event log / replay | Kafka/MSK or Kinesis (see [messaging-async.md](./messaging-async.md)) | Using SQL as a queue |
 
-* **Strong consistency**
- * Reads always reflect the latest committed write.
- * Important when correctness matters more than latency (e.g. payments, balances).
-* **ACID transactions**
- * **Atomicity** — all operations in a transaction succeed or none do.
- * Prevents partial updates (e.g. money debited but not credited).
- * **Consistency** — the database moves from one valid state to another.
- * Enforces constraints like foreign keys, uniqueness, and invariants.
- * **Isolation** — concurrent transactions do not interfere incorrectly.
- * Prevents issues like dirty reads and lost updates.
- * **Durability** — once a transaction commits, it will survive crashes.
- * Data is persisted to disk and recoverable after failures.
-* **Joins and complex queries**
- * Supports relational queries across multiple tables.
- * Enables expressive querying without duplicating data.
-* **Rigid schema**
- * Schema must be defined upfront and enforced by the database.
- * Prevents invalid data but makes schema evolution more expensive.
-* **Typically vertical scaling**
- * Performance is often improved by scaling a single node (more CPU/RAM).
- * Horizontal scaling is possible but more complex (sharding, replicas).
+**Rule:** one **source of truth** per entity; other stores are **projections** (cache, search, analytics).
 
-### Use SQL when:
+## SQL databases
 
-* Financial data
-* Strong invariants
-* Complex relationships
+* **Strong consistency** — reads reflect latest committed write when you need correctness (payments, balances).
+* **ACID** — atomic multi-row updates; constraints (FK, unique) enforce invariants in the DB.
+* **Joins / ad-hoc queries** — good for relationships and evolving product questions.
+* **Schema** — upfront cost; migrations are real work (expand/contract).
+* **Scale** — vertical first; read replicas for read scale; sharding when a single primary cannot keep up.
 
-### Indexes in SQL Databases
+**Use SQL when:** financial data, strong invariants, complex relationships, unpredictable query shapes.
 
-An index is a **separate data structure** (usually a B-tree) that maps:
+**AWS:** **Amazon RDS** / **Amazon Aurora** (Postgres/MySQL). Aurora when you want managed storage scale and fast failover; call out **writer** vs **reader** endpoints.
 
-> column values → row locations
+### SQL indexes
 
-This allows the database to find data **without scanning the entire table**.
+B-tree (typical) maps column values → row locations.
 
-* Improve read performance by avoiding full table scans.
- * Example: querying trips by `rider_id` without an index requires scanning all trips.
- * With an index on `rider_id`, the database jumps directly to matching rows.
-* Add overhead to writes.
- * Every insert, update, or delete must also update the index.
- * Example: adding an index on `status` means every trip status change updates both the table and the index.
-* Consume additional storage.
- * Indexes store copies of key values and pointers to rows.
- * Multiple indexes can significantly increase storage costs.
-* Flexible and ad-hoc.
- * Indexes can usually be added later.
- * Supports a wide variety of query patterns (filters, joins, sorting).
+* Speeds filters/sorts; slows writes; costs storage.
+* Index what you query: e.g. `GET /trips?driver_id=&status=` → composite `(driver_id, status)`.
+* Avoid indexing rarely filtered columns.
 
-### SQL rule:
-Index only what you query frequently.
+## NoSQL / key-value / document
 
-* Good index: `GET /trips?driver_id=123&status=ACTIVE`
- → composite index on `(driver_id, status)`
-* Bad index: fields rarely used in filters or sorting
+* **Horizontal scale** by partition key.
+* **High write throughput** when access patterns are key-shaped.
+* **Eventual consistency** options on replicas/indexes.
+* **Denormalize** for reads; model around queries.
 
-**AWS:** **Amazon RDS** (PostgreSQL, MySQL, etc.) and **Amazon Aurora** are the standard managed relational choices. Use them when the interview clearly needs joins, transactions, or ad hoc query flexibility.
+**Use NoSQL when:** very high traffic, few well-known access patterns, temporary inconsistency OK.
 
----
+**AWS:** **Amazon DynamoDB** — PK/SK, GSI/LSI. Every interview answer should list **exact** access patterns → keys.
 
-### NoSQL Databases
+### DynamoDB vs “document DB” vs Redis
 
-* **Horizontal scaling**
- * Built to scale by adding more nodes rather than upgrading a single machine.
- * Data is automatically partitioned and distributed across nodes.
-* **High write throughput**
- * Optimized for fast inserts and updates at scale.
- * Avoids costly joins and complex multi-row transactions.
-* **Eventual consistency**
- * Writes propagate asynchronously to replicas.
- * Reads may temporarily return stale data, but the system converges over time.
-* **Denormalized data model**
- * Data is intentionally duplicated to match query patterns.
- * Minimizes read-time computation and eliminates joins.
+| Store | Strength | Weakness in interviews |
+| --- | --- | --- |
+| DynamoDB | Predictable scale, serverless ops story | Bad for arbitrary queries; hot partitions |
+| Document (Mongo-style) | Flexible documents | Still need index/query discipline; ops/consistency story |
+| Redis | Ultra-low latency structures | Memory cost; durability/persistence tradeoffs |
 
-### Use NoSQL when:
-* Very high traffic or unpredictable load
-* Simple, well-defined access patterns
-* Systems that can tolerate temporary inconsistency
-* Real-time or large-scale workloads
+## Wide-column and logs
 
-### Indexes in NoSQL Databases
+* **Cassandra-style** — wide partitions, time-series-ish write paths, tunable consistency (mention when interviewer says “write-heavy globally”).
+* **Append-only logs** (Kafka) — not a primary user DB; great for events and rebuildable projections.
 
-In NoSQL systems, indexes are **part of the data model**, not an afterthought.
-They must be designed **before data is written**, based on known access patterns.
+## Indexes and access patterns
 
-* **Primary key**
- * Always exists and defines how data is physically stored.
- * Composed of a **partition key** and an optional **sort key**.
- * Determines:
- * Which node stores the data
- * How data is ordered within a partition
- * Optimized for direct key-based lookups and range queries.
- * **Example**:
- * `PK: user_id`
- > Fast lookup by user ID, but no support for other query patterns.
-* **Secondary indexes**
- * Explicitly defined to support additional query patterns.
- * Internally behave like separate tables that replicate data.
- * Types:
- * **GSI (Global Secondary Index)** — different partition and/or sort keys
- * New partition key allowed
- * Queries across users/entities
- * Eventually consistent by default
- * **LSI (Local Secondary Index)** — same partition key, different sort key
- * Same partition key
- * Only different sorting
- * Strongly consistent reads supported
-* **Base table**
- * Table: `Orders`
- * **Partition key (PK):** `user_id`
- * **Sort key (SK):** `order_id`
- * GSI **Partition key**: `status`
- * GSI **Sort key**: `created_at`
+### SQL
 
- Example item:
- ```json
- {
- "user_id": "u123",
- "order_id": "o987",
- "status": "SHIPPED",
- "created_at": "2025-01-10",
- "total": 150.00
- }
- ```
+Indexes are **additive** and usually can be added later (with care on large tables).
 
- Query:
- ```
- Get all SHIPPED orders sorted by creation date
- PK = "SHIPPED"
- SK begins with "2025-01"
- ```
+### DynamoDB / NoSQL
 
-### Tradeoffs in NoSQL Indexes
-* Writes are more expensive (base table + indexes).
-* Indexes consume additional throughput and storage.
-* Queries are limited to predefined access patterns.
-* Poor key design can cause hot partitions and throttling.
+Indexes are **part of the data model**.
 
-### NoSQL Rule
-Model your data around queries.
-Changing access patterns later is expensive and often requires data migration.
+* **Primary key** — partition (+ optional sort); owns placement and local order.
+* **GSI** — new PK/SK; eventually consistent by default; costs write units.
+* **LSI** — same PK, different SK; strong consistency possible.
 
-**AWS:** **Amazon DynamoDB** matches this model (PK/SK, GSI, LSI). Interview answers should tie every access pattern to keys and indexes.
+**NoSQL rule:** model for queries first; changing patterns later ≈ migration.
 
----
+## Search and derived indexes
 
-### Search indexes and OpenSearch
+**OpenSearch** (or Elasticsearch) for full-text, facets, typo tolerance. Keep OLTP as truth; index async (CDC, stream, or batch). Accept lag; define rebuild story.
 
-For **full-text search**, **faceted queries**, or **log/search analytics** at scale, teams often add a dedicated search cluster. On AWS, **Amazon OpenSearch Service** is the managed option (Elasticsearch-compatible API). It complements DynamoDB or RDS: the primary store remains source of truth; search indexes are **derived** (async indexing, CDC, or batch rebuild). See also [observability.md](./observability.md) for using OpenSearch in logging and analytics paths.
+See [observability.md](./observability.md) when OpenSearch is also the log/search plane.
+
+## Multi-store patterns
+
+* **CQRS-ish** — write path to SQL/DynamoDB; read models in cache/search.
+* **Outbox** — durable event next to the write so projections stay consistent (see [messaging-async.md](./messaging-async.md)).
+* **Cache** — never the only copy of critical state ([caching.md](./caching.md)).
 
 ## 🔗 Related
 
 - [Topics index](../topics-index.md)
 - [Caching](./caching.md)
+- [Messaging and async](./messaging-async.md)
 - [Concurrency](./concurrency.md)
-- [AWS reference layout]./aws-reference-layout.md
+- [AWS reference layout](./aws-reference-layout.md)

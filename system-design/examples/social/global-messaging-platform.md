@@ -6,7 +6,7 @@ A global messaging platform (WhatsApp / iMessage scale) optimizes **multi-region
 
 **Primary users:** consumers (1:1, groups), businesses (API templates), operators (region failover).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **per-conversation ordering + group fanout + media CDN**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **per-conversation ordering + group fanout + media CDN**.
 
 Use [chat messenger](./chat-messenger.md) for full v3 depth; this doc is the **WhatsApp interview routing** variant.
 

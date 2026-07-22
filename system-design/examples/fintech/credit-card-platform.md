@@ -6,7 +6,7 @@ A credit card platform covers **issuing**, **authorization** (hold funds), **cle
 
 **Primary users:** cardholders (spend, limits), issuers (BIN programs), merchants (via networks), risk (decline rules).
 
-**Interview pacing:** [60-minute runbook](../../prep/interview-runbook-60m.md) — deep dive **auth hold → capture → ledger posting + idempotency**.
+**Interview pacing:** [60-minute runbook](../../topics/interview-runbook-60m.md) — deep dive **auth hold → capture → ledger posting + idempotency**.
 
 **Company anchors:** Chase / Amex / Capital One issuing stack; Apple Card; Stripe Issuing.
 

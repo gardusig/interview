@@ -6,7 +6,7 @@ An ETA prediction service estimates **remaining delivery time** for active trips
 
 **Primary users:** customers (countdown UI), dispatch matching (prioritization), operators (model health, error dashboards), data science (model versions).
 
-**Interview pacing:** Use [60-minute runbook](../../prep/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **prediction pipeline + smoothing**.
+**Interview pacing:** Use [60-minute runbook](../../topics/interview-runbook-60m.md) — ~10 min requirements theater (below), ~18–32 min diagram + API/DB, ~46–56 min deep dive on **prediction pipeline + smoothing**.
 
 Location stream: [real-time delivery tracking](./real-time-delivery-tracking.md). Assignment context: [delivery dispatch matching](./delivery-dispatch-matching.md).
 
@@ -507,4 +507,4 @@ Interview: trade **accuracy** vs **perceived stability** — always show confide
 - [Delivery dispatch matching](./delivery-dispatch-matching.md)
 - [Maps navigation routing](./maps-navigation-routing.md)
 - [Stream processing platform](../event-driven/stream-processing-platform.md)
-- [60-minute runbook](../../prep/interview-runbook-60m.md)
+- [60-minute runbook](../../topics/interview-runbook-60m.md)

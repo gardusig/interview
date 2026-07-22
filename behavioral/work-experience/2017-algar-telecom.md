@@ -121,7 +121,7 @@ flowchart LR
 - **Apprentice for competitive programming:** I invested time **onboarding** a younger apprentice toward **CP study** (practice loop, resources, clarity on goals)—**adjacent** to Algar deliverables, honest about where my attention went alongside the inventory build.
 - **Retrospective honesty:** For a first independent job, the result delivered value but was an **odd, low-resource approach** with limited experience behind it and a **messy repository** (too much machine-specific script detail, weak organization). With today’s experience I would keep the same core idea, but ship it with stronger **planning**, **operation abstractions**, and **data contracts** for **higher reliability and accuracy** across many router operations.
 
-For full STAR drills, rehearse from [`../rehearsal.md`](../rehearsal.md) and [`../domains/README.md`](../domains/README.md) with anchors into other roles.
+For full STAR drills, rehearse from [`../reference/rehearsal.md`](../reference/rehearsal.md) and [`../reference/domains/README.md`](../reference/domains/README.md) with anchors into other roles.
 
 ## 🔗 Related
 
